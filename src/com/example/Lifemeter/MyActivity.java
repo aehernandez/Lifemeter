@@ -37,12 +37,6 @@ public class MyActivity extends Activity {
         String[] fakeArray;
         fakeArray = new String[7];
         fakeArray = database.query(sampledb.TableName, new String[] {id, activity}, null, null);
-        fakeArray[1] = "Work";
-        fakeArray[2] = "Eating";
-        fakeArray[3] = "Gym";
-        fakeArray[4] = "Travel";
-        fakeArray[5] = "Shopping";
-        fakeArray[6] = "Studying";
         return fakeArray;
     }
 
