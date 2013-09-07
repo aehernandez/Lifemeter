@@ -20,8 +20,10 @@ import android.widget.TextView;
 
 public class Lifemeter extends Activity {
 
-    private SQLiteDatabase database;
-    private DbList sampledb;
+    public SQLiteDatabase database;
+    public DbList sampledb;
+    public DbClass GeoFenceDb;
+    public DbActivities ActivityDb = new DbActivities(this); 
     //Location classes
     public GPSLocation gps;
     private GeofenceBroadcast geofenceReceiver;
@@ -48,6 +50,9 @@ public class Lifemeter extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
+        ActivityDb.Insert(0,"Home",100);
+        ActivityDb.Insert(0, "Eat", 150);
 
         //Handles all the GPS pings and Geofencing capabilities
         gps = new GPSLocation();
@@ -163,7 +168,7 @@ public class Lifemeter extends Activity {
 
     // Get the list of activities being tracked
     public String[] getActivitiesTracked() {
-        String[] FakeArray = new String[100];
+        String[] FakeArray = new String[100000];
         Cursor CursorArray;
         String activity = "activity";
         CursorArray = database.query(sampledb.TableName, new String[] {activity}, null, null, null, null, null, null);
@@ -174,32 +179,94 @@ public class Lifemeter extends Activity {
         }
         return FakeArray;
     }
+    
+    //GeoFence Data retrieval for radius for Alain
+    public double[] getRadius(){
+		double[] FakeRad = new double[1000000];
+		Cursor CursorArray;
+		String rad = "radius";
+		CursorArray = database.query(GeoFenceDb.TableName, new String[] {rad},null, null, null, null, null, null); 
+		
+		CursorArray.moveToFirst();
+		for (int i=0; i < CursorArray.getCount(); i++){
+			FakeRad[i] = CursorArray.getDouble(3);
+		}
+	    return FakeRad;
+	}
+
+	//GeoFence Data retrieval for lattitude for Alain
+	public double[] getLatt(){
+		double[] FakeLatt = new double[1000000];
+		Cursor CursorArray;
+		String l = "latt";
+		CursorArray = database.query(GeoFenceDb.TableName, new String[] {l},null, null, null, null, null, null);
+		
+
+		CursorArray.moveToFirst();
+		for (int i=0; i < CursorArray.getCount(); i++){
+			FakeLatt[i] = CursorArray.getDouble(1);
+		}
+	    return FakeLatt;
+	}
+
+	//GeoFence Data retrieval for longittude for Alain
+	public double[] getLongt(){
+		double[] FakeLongt = new double[1000000];
+		Cursor CursorArray;
+		String Lt = "longt";
+		CursorArray = database.query(GeoFenceDb.TableName, new String[] {Lt},null, null, null, null, null, null); 
+		
+		CursorArray.moveToFirst();
+		for (int i=0; i < CursorArray.getCount(); i++){
+			FakeLongt[i] = CursorArray.getDouble(2);
+		}
+	    return FakeLongt;
+	}
+
+	//GeoFence Data retrieval for ID for Alain
+	public String[] getId(){
+		String[] FakeId = new String[1000000];
+		Cursor CursorArray;
+		String Id = "id";
+		CursorArray = database.query(GeoFenceDb.TableName, new String[] {Id},null, null, null, null, null, null);
+		
+		CursorArray.moveToFirst();
+		for (int i=0; i < CursorArray.getCount(); i++){
+			FakeId[i] = CursorArray.getString(4);
+		}
+	    return FakeId;
+	}
+	
 
 
     // Get the activities in chronological order for a given day
     public String[] getActivityList(int day) {
-        String[] fakeArray;
-        fakeArray = new String[6];
-        fakeArray[0] = "Home";
-        fakeArray[1] = "Work";
-        fakeArray[2] = "Home";
-        fakeArray[3] = "Gym";
-        fakeArray[4] = "Travel";
-        fakeArray[5] = "Shopping";
-        return fakeArray;
-    }
-
+        
+            String[] fakeArray = new String[1000000];
+	    Cursor CursorArray;
+	    String Activity = "activity";
+	    CursorArray = database.rawQuery("SELECT activity FROM" +ActivityDb.TableName+ "WHERE day="+day ,null);
+	    
+	    CursorArray.moveToFirst();
+		for (int i=0; i < CursorArray.getCount(); i++){
+			fakeArray[i] = CursorArray.getString(0);
+		}
+	    return fakeArray;
+	}
+    
     // Get the activity times in chronological order for a given day
     public double[] getTimeList(int day) {
-        double[] fakeArray;
-        fakeArray = new double[6];
-        fakeArray[0] = 38.56;
-        fakeArray[1] = 593.23;
-        fakeArray[2] = 192.80;
-        fakeArray[3] = 60.97;
-        fakeArray[4] = 15.40;
-        fakeArray[5] = 78.95;
-        return fakeArray;
+            double[] fakeArray = new double[1000000];
+	    Cursor CursorArray;
+	    String Activity = "activity";
+	    CursorArray = database.rawQuery("SELECT time FROM" +ActivityDb.TableName+ "WHERE day="+day ,null);
+	    
+	    CursorArray.moveToFirst();
+		for (int i=0; i < CursorArray.getCount(); i++){
+			fakeArray[i] = CursorArray.getDouble(0);
+		}
+	return fakeArray;
+        
     }
 
     // Calculate the number of minutes of each category for a day
