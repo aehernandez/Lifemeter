@@ -39,6 +39,7 @@ public class GPSLocation extends FragmentActivity implements
     private LocationClient mLocationClient;
     private LocationRequest mLocationRequest;
     private Location lastLocation;
+    private String lastGeofence;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,14 @@ public class GPSLocation extends FragmentActivity implements
         mLocationRequest.setInterval(UPDATE_INTERVAL);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         lastLocation = mLocationClient.getLastLocation();
+    }
+
+    public String getLastGeofence() {
+        return lastGeofence;
+    }
+
+    public void setLastGeofence(String id) {
+        this.lastGeofence = id;
     }
 
     @Override
@@ -71,20 +80,27 @@ public class GPSLocation extends FragmentActivity implements
         }
     }
 
-    public void createGeofence(Location location, String category) {
+    public void initializeGeofenceListeners() {
+
+    }
+
+    public void createGeofence(Location location, String uniqueID) {
 
         Geofence g = new Geofence.Builder().setCircularRegion(location.getLatitude()
                                                              ,location.getLongitude()
                                                              ,DEFAULT_RADIUS)
-                                   .setRequestId(category)
+                                   .setRequestId(uniqueID)
                                    .setExpirationDuration(Geofence.NEVER_EXPIRE)
                                    .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER
                                            | Geofence.GEOFENCE_TRANSITION_EXIT).build();
         ArrayList<Geofence> gl = new ArrayList<Geofence>();
+
         gl.add(g);
         mLocationClient.addGeofences(gl , getTransitionPendingIntent(), this);
 
     }
+
+
 
     private PendingIntent getTransitionPendingIntent() {
         // Create an explicit Intent

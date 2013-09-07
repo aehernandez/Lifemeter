@@ -9,8 +9,14 @@
     <file path="$PROJECT_DIR$/res/layout/main.xml" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378516043389" ignored="false" />
     <file path="$PROJECT_DIR$/res/values/strings.xml" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378516043389" ignored="false" />
     <file path="/Dummy.txt" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378540580712" ignored="false" />
-    <file path="/fragment.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378518417731" ignored="false" />
+    <file path="/fragment.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378581047656" ignored="false" />
     <file path="/MyActivity.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378532584540" ignored="false" />
+    <file path="/Lifemeter.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378582259464" ignored="false" />
+    <file path="/GeofenceWrap.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378544824299" ignored="false" />
+    <file path="/GPSLocation.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378580798962" ignored="false" />
+    <file path="/GeofenceWrapper.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378577605466" ignored="false" />
+    <file path="/HandleGeofenceIntentService.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378582328006" ignored="false" />
+    <file path="/GeofenceBroadcast.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378581738531" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +80,29 @@
       <file leaf-file-name="Lifemeter.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/Lifemeter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="50" selection-start="1903" selection-end="1903" vertical-scroll-proportion="0.016519824">
+            <state line="35" column="0" selection-start="1003" selection-end="1003" vertical-scroll-proportion="0.60535717">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GeofenceBroadcast.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/GeofenceBroadcast.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="0" selection-start="290" selection-end="290" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HandleGeofenceIntentService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/HandleGeofenceIntentService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="36" column="82" selection-start="1430" selection-end="1430" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -83,8 +111,29 @@
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="44" selection-start="1085" selection-end="1085" vertical-scroll-proportion="0.0">
+            <state line="12" column="51" selection-start="502" selection-end="523" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SettingsTab.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/SettingsTab.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="13" selection-start="194" selection-end="194" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GPSLocation.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/GPSLocation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="36" column="50" selection-start="1239" selection-end="1239" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3279#3289#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -108,15 +157,20 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/src/com/example/Lifemeter/MyActivity.java" />
+        <option value="$PROJECT_DIR$/src/com/example/Lifemeter/GeofenceWrap.java" />
+        <option value="$PROJECT_DIR$/src/com/example/Lifemeter/GeofenceWrapper.java" />
+        <option value="$PROJECT_DIR$/src/com/example/Lifemeter/GPSLocation.java" />
+        <option value="$PROJECT_DIR$/src/com/example/Lifemeter/GeofenceBroadcast.java" />
+        <option value="$PROJECT_DIR$/src/com/example/Lifemeter/HandleGeofenceIntentService.java" />
         <option value="$PROJECT_DIR$/src/com/example/Lifemeter/Lifemeter.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="267" />
-    <option name="y" value="49" />
-    <option name="width" value="1422" />
-    <option name="height" value="1056" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -131,6 +185,11 @@
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
+  <component name="ProjectStructureProblems">
+    <ignored-problems>
+      <problem id="unused-library(library:project:libs)" />
+    </ignored-problems>
+  </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
@@ -144,8 +203,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -210,21 +269,23 @@
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/appcompat" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="Android Application.Lifemeter">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -259,19 +320,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -297,6 +345,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -419,28 +480,29 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="267" y="49" width="1422" height="1056" extended-state="0" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="92" y="100" width="1182" height="544" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935154" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32622603" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.67147434" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23982558" sideWeight="0.6727273" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5072464" sideWeight="0.67064846" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28531468" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -514,63 +576,123 @@
     <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/Lifemeter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="44" selection-start="1085" selection-end="1085" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/Lifemeter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="44" selection-start="1085" selection-end="1085" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/Lifemeter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="13" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/DbList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="13" selection-start="197" selection-end="197" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/HomeTab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="194" selection-end="194" vertical-scroll-proportion="0.12142857">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Android/android-sdk/platforms/android-17/android.jar!/java/lang/Override.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="18" selection-start="306" selection-end="306" vertical-scroll-proportion="0.34393063">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/Categories.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="38" selection-start="464" selection-end="464" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Android/android-sdk/extras/google/google_play_services/libproject/google-play-services_lib/libs/google-play-services.jar!/com/google/android/gms/internal/cn.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="28" selection-start="1116" selection-end="1116" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Android/android-sdk/extras/google/google_play_services/libproject/google-play-services_lib/libs/google-play-services.jar!/com/google/android/gms/location/Geofence.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="295" selection-end="295" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Android/android-sdk/extras/google/google_play_services/libproject/google-play-services_lib/libs/google-play-services.jar!/com/google/android/gms/location/LocationClient.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="174" selection-end="174" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/SettingsTab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="194" selection-end="194" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/GPSLocation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="50" selection-start="1239" selection-end="1239" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3279#3289#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/GoalsTab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="194" selection-end="194" vertical-scroll-proportion="0.16790123">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="44" selection-start="1227" selection-end="1227" vertical-scroll-proportion="0.0">
+        <state line="12" column="51" selection-start="502" selection-end="523" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/GeofenceBroadcast.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="69" selection-start="571" selection-end="571" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="13" column="0" selection-start="290" selection-end="290" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/HandleGeofenceIntentService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="44" selection-start="1085" selection-end="1085" vertical-scroll-proportion="0.0">
+        <state line="36" column="82" selection-start="1430" selection-end="1430" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/Lifemeter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="50" selection-start="1903" selection-end="1903" vertical-scroll-proportion="0.016519824">
-          <folding />
+        <state line="35" column="0" selection-start="1003" selection-end="1003" vertical-scroll-proportion="0.60535717">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -614,7 +736,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>Android 4.3 Platform</last-edited>
+          <last-edited>Android 4.2 Platform</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -638,7 +760,7 @@
       </state>
       <state key="ProjectJDKs.UI">
         <settings>
-          <last-edited>1.7</last-edited>
+          <last-edited>Android 4.2 Platform</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -650,6 +772,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>android-support-v7-appcompat</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

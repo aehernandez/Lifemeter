@@ -12,7 +12,7 @@ import java.util.List;
 // IntentService that handles what a specific Geofence should do on a transition.
 
 public class HandleGeofenceIntentService extends IntentService {
-
+    public static final String UPDATE_LASTGEOFENCE = "updategeo";
     public HandleGeofenceIntentService() {
         super("HandleGeofenceIntentService");
     }
@@ -31,6 +31,21 @@ public class HandleGeofenceIntentService extends IntentService {
 
             //Get the transition type, either enter or exit
             int transitionType = LocationClient.getGeofenceTransition(intent);
+
+            if(transitionType == Geofence.GEOFENCE_TRANSITION_ENTER) {
+
+                //Updates the last known Geofence to the main activity - Lifemeter
+                List<Geofence> triggerList = LocationClient.getTriggeringGeofences(intent);
+
+                String lastGeofence = triggerList.get(triggerList.size() -1).getRequestId();
+
+                Intent broadcastGeofence = new Intent();
+                broadcastGeofence.setAction(Lifemeter.GeofenceBroadcast.ACTION_REP);
+                broadcastGeofence.addCategory(Intent.CATEGORY_DEFAULT);
+                broadcastGeofence.putExtra(UPDATE_LASTGEOFENCE, lastGeofence);
+                sendBroadcast(broadcastGeofence);
+
+            }
 
             //Get which Geofences triggered
             List<Geofence> triggerList = LocationClient.getTriggeringGeofences(intent);
