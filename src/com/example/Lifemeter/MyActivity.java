@@ -35,7 +35,7 @@ public class MyActivity extends Activity {
     // Get the list of activities being tracked
     public String[] getActivitiesTracked() {
         String[] fakeArray;
-        fakeArray = new String[7];
+        //fakeArray = new String[7];
         fakeArray = database.query(sampledb.TableName, new String[] {id, activity}, null, null);
         return fakeArray;
     }
