@@ -14,6 +14,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import java.util.*;
+
 public class Lifemeter extends Activity {
 
     private SQLiteDatabase database;
@@ -78,6 +80,16 @@ public class Lifemeter extends Activity {
             System.out.println(categories[x]);
             System.out.println(totals[x]);
         }
+    }
+
+    public int whatToday() {
+        Calendar today = Calendar.getInstance();
+        today.set(Calendar.MILLISECOND,0);
+        today.set(Calendar.SECOND,0);
+        today.set(Calendar.MINUTE,0);
+        today.set(Calendar.HOUR_OF_DAY,0);
+        long msSince = today.getTimeInMillis();
+        return (int)(msSince/86400000);
     }
 
     /**
