@@ -12,11 +12,12 @@ public class DbActivities extends SQLiteOpenHelper {
 	//public static final double lattitude = 0;
 	//public static final double timestamp = 0;
 	
-	private static final String DatabaseName = "LifeMeterActivity.db";
-	private static final int DatabaseVersion = 1;
+	public static final String DatabaseName = "LifeMeterActivity.db";
+	public static final int DatabaseVersion = 1;
 	
-	private static final String TableName = "LifeMeterActivities";
+	public static final String TableName = "LifeMeterActivities";
 
+	public SQLiteDatabase db;
 	/*private static final String DbCreate = "create table"
 		            + longitude + lattitude  + timestamp
 		            + " text not null);";
@@ -33,7 +34,7 @@ public class DbActivities extends SQLiteOpenHelper {
 	}
 	
 
-	public void Insert(SQLiteDatabase db, int day, String activity, double time){
+	public void Insert(int day, String activity, double time){
 
 		db.execSQL("INSERT INTO TableName (_id integer primary key autoincrement,"+day+","+activity+","+time+")" +
 			       "VALUES (id,day,activity,time);");
