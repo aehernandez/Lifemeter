@@ -11,7 +11,7 @@ public class DbList extends SQLiteOpenHelper {
 	private static final String DatabaseName = "Activities.db";
 	private static final int DatabaseVersion = 1;
 	
-	private static final String TableName = "Activities";
+	public static final String TableName = "Activities";
 
 	
 	public DbList(Context context){
