@@ -38,9 +38,9 @@ public class Lifemeter extends Activity {
         //Handles all the GPS pings and Geofencing capabilities
         gps = new GPSLocation();
         
-        //Creates Activity db
-        
-        DbActivities db = new DbActivities(this);
+        //Creates List db
+        DbList db = new DbList(this);
+        db.Insert(db,"Smoking");
 
         //Uses BroadcastReceiver in order to update the last entered Geofence for use in the frontend
         IntentFilter locationFilter = new IntentFilter(GeofenceBroadcast.ACTION_REP);
