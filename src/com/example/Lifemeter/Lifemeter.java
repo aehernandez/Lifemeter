@@ -1,5 +1,6 @@
 package com.example.Lifemeter;
 
+import java.text.DecimalFormat;
 import java.util.Calendar;
 
 import android.app.ActionBar;
@@ -55,13 +56,13 @@ public class Lifemeter extends Activity {
         ActivityDb.Insert(0, "Eat", 150);
 
         //Handles all the GPS pings and Geofencing capabilities
-        gps = new GPSLocation();
+        //gps = new GPSLocation();
 
         //Uses BroadcastReceiver in order to update the last entered Geofence for use in the frontend
-        IntentFilter locationFilter = new IntentFilter(GeofenceBroadcast.ACTION_REP);
-        locationFilter.addCategory(Intent.CATEGORY_DEFAULT);
-        geofenceReceiver = new GeofenceBroadcast();
-        registerReceiver(geofenceReceiver,locationFilter);
+        //IntentFilter locationFilter = new IntentFilter(GeofenceBroadcast.ACTION_REP);
+        //locationFilter.addCategory(Intent.CATEGORY_DEFAULT);
+        //geofenceReceiver = new GeofenceBroadcast();
+        //registerReceiver(geofenceReceiver,locationFilter);
 
         ActionBar bar = getActionBar();
         bar.setDisplayShowHomeEnabled(false);
@@ -94,27 +95,17 @@ public class Lifemeter extends Activity {
         fragmentTransaction.add(R.id.fragment_container, settingsFragment);
         tabD.setTabListener(new CustomTabListener(settingsFragment));
         bar.addTab(tabD);
-
-        double[] totals = calculateTotalsPeriod(17,19);
-        String[] categories = getActivityList(17);
-        for (int x=0; x<totals.length; x++) {
-            System.out.println(categories[x]);
-            System.out.println(totals[x]);
-        }
     }
 
-    public int whatToday() {
-        Calendar today = Calendar.getInstance();
-        today.set(Calendar.MILLISECOND,0);
-        today.set(Calendar.SECOND,0);
-        today.set(Calendar.MINUTE,0);
-        today.set(Calendar.HOUR_OF_DAY,0);
-        long msSince = today.getTimeInMillis();
-        return (int)(msSince/86400000);
+    public void onResume() {
+        super.onResume();
+        currentActivity = (TextView) homeFragment.getView().findViewById(R.id.current_activity);
+        timeElapsed = (TextView) homeFragment.getView().findViewById(R.id.time_elapsed);
+        updateHome();
     }
 
     public void updateHome() {
-        String[] activities = getActivityList(whatToday());
+        String[] activities = getActivitiesTracked();
         double[] weeklyTotals = new double[activities.length];
 
         if (whatToday() - getFirstDay()>5) {
@@ -139,6 +130,39 @@ public class Lifemeter extends Activity {
                 }
             }
         }
+
+        firstBar=(ProgressBar) homeFragment.getView().findViewById(R.id.first_progress_bar);
+        firstBar.setMax((int)weeklyTotals[0]);
+        firstBar.setProgress((int)weeklyTotals[0]);
+        secondBar=(ProgressBar) homeFragment.getView().findViewById(R.id.second_progress_bar);
+        secondBar.setMax((int)weeklyTotals[0]);
+        secondBar.setProgress((int)weeklyTotals[1]);
+        thirdBar=(ProgressBar) homeFragment.getView().findViewById(R.id.third_progress_bar);
+        thirdBar.setMax((int)weeklyTotals[0]);
+        thirdBar.setProgress((int)weeklyTotals[2]);
+        fourthBar=(ProgressBar) homeFragment.getView().findViewById(R.id.fourth_progress_bar);
+        fourthBar.setMax((int)weeklyTotals[0]);
+        fourthBar.setProgress((int)weeklyTotals[3]);
+        fifthBar=(ProgressBar) homeFragment.getView().findViewById(R.id.fifth_progress_bar);
+        fifthBar.setMax((int)weeklyTotals[0]);
+        fifthBar.setProgress((int)weeklyTotals[4]);
+
+        DecimalFormat hourForm = new DecimalFormat();
+        hourForm.applyLocalizedPattern("##,###.#");
+        double tempHours;
+
+        for(int j=0;j<topActivities.length;j++) {
+            String id = "activity"+(j+1);
+            int resID = getResources().getIdentifier(id, "id", "com.example.Lifemeter");
+            topActivities[j] = (TextView)homeFragment.getView().findViewById(resID);
+            topActivities[j].setText(activities[j]);
+
+            id = "time"+(j+1);
+            resID= getResources().getIdentifier(id,"id","com.example.Lifemeter");
+            topTimes[j]=(TextView)homeFragment.getView().findViewById(resID);
+            topTimes[j].setText(hourForm.format(weeklyTotals[j]/60) + " hrs");
+        }
+
     }
 
     /**
@@ -161,6 +185,17 @@ public class Lifemeter extends Activity {
      * The list of activities corresponds in order using getActivityList(use the later day)
      */
 
+    // Gives today's date in terms of days from the java reference date
+    public int whatToday() {
+        Calendar today = Calendar.getInstance();
+        today.set(Calendar.MILLISECOND,0);
+        today.set(Calendar.SECOND,0);
+        today.set(Calendar.MINUTE,0);
+        today.set(Calendar.HOUR_OF_DAY,0);
+        long msSince = today.getTimeInMillis();
+        return (int)(msSince/86400000);
+    }
+
     // Get the first reference date for which data is available
     public int getFirstDay() {
         return 15;
@@ -168,16 +203,25 @@ public class Lifemeter extends Activity {
 
     // Get the list of activities being tracked
     public String[] getActivitiesTracked() {
-        String[] FakeArray = new String[100000];
-        Cursor CursorArray;
-        String activity = "activity";
-        CursorArray = database.query(sampledb.TableName, new String[] {activity}, null, null, null, null, null, null);
+        //String[] FakeArray = new String[100];
+        //Cursor CursorArray;
+        //String activity = "activity";
+        //CursorArray = database.query(sampledb.TableName, new String[] {activity}, null, null, null, null, null, null);
 
-        CursorArray.moveToFirst();
-        for (int i=0; i < CursorArray.getCount(); i++){
-            FakeArray[i] = CursorArray.getString(1);
-        }
-        return FakeArray;
+        //CursorArray.moveToFirst();
+        //for (int i=0; i < CursorArray.getCount(); i++){
+        //    FakeArray[i] = CursorArray.getString(1);
+        //}
+        String[] fakeArray;
+        fakeArray = new String[7];
+        fakeArray[0] = "Home";
+        fakeArray[1] = "Work";
+        fakeArray[2] = "Eating";
+        fakeArray[3] = "Gym";
+        fakeArray[4] = "Travel";
+        fakeArray[5] = "Shopping";
+        fakeArray[6] = "Studying";
+        return fakeArray;
     }
     
     //GeoFence Data retrieval for radius for Alain
@@ -270,12 +314,11 @@ public class Lifemeter extends Activity {
     }
 
     // Calculate the number of minutes of each category for a day
-    public double[] calculateTotalsDay(int day, String[] activityList) {
-
-
+    public double[] calculateTotalsDay(int day) {
         double[] timeList = getTimeList(day);
+        String[] activityList = getActivityList(day);
 
-        String[] categories = getActivityList(day);
+        String[] categories = getActivitiesTracked();
         double[] totals;
         totals = new double[categories.length];
         for (int x=0; x<totals.length; x++) {
@@ -292,43 +335,16 @@ public class Lifemeter extends Activity {
         }
         return totals;
     }
-    
-	public void onResume() {
-		super.onResume();
-		currentActivity = (TextView) homeFragment.getView().findViewById(R.id.current_activity);
-		timeElapsed = (TextView) homeFragment.getView().findViewById(R.id.time_elapsed);
-		firstBar=(ProgressBar) homeFragment.getView().findViewById(R.id.first_progress_bar);
-		firstBar.setMax(100);
-		firstBar.setProgress(57);
-		secondBar=(ProgressBar) homeFragment.getView().findViewById(R.id.second_progress_bar);
-		secondBar.setMax(100);
-		secondBar.setProgress(40);
-		thirdBar=(ProgressBar) homeFragment.getView().findViewById(R.id.third_progress_bar);
-		thirdBar.setMax(100);
-		thirdBar.setProgress(28);
-		fourthBar=(ProgressBar) homeFragment.getView().findViewById(R.id.fourth_progress_bar);
-		fourthBar.setMax(100);
-		fourthBar.setProgress(13);
-		fifthBar=(ProgressBar) homeFragment.getView().findViewById(R.id.fifth_progress_bar);
-		fifthBar.setMax(100);
-		fifthBar.setProgress(4);
-		for(int j=0;j<topActivities.length;j++) {
-			String id = "activity"+(j+1);
-			int resID = getResources().getIdentifier(id, "id", "com.example.Lifemeter");
-			topActivities[j] = (TextView)homeFragment.getView().findViewById(resID);
-			id = "time"+(j+1);
-			resID= getResources().getIdentifier(id,"id","com.example.Lifemeter");
-			topTimes[j]=(TextView)homeFragment.getView().findViewById(resID);
-		}
-	}
+
 
     // Calculate the number of minutes for a given timeframe inclusive of days
     public double[] calculateTotalsPeriod(int dayBegin, int dayEnd) {
         String[] activityList = getActivityList(dayEnd);
-        double[] totals = calculateTotalsDay(dayEnd, activityList);
+        double[] totals = calculateTotalsDay(dayEnd);
         for (int x=dayBegin; x<dayEnd; x++) {
+            activityList = getActivityList(x);
             for (int y=0; y<totals.length; y++) {
-                totals[y] = totals[y] + calculateTotalsDay(x, activityList)[y];
+                totals[y] = totals[y] + calculateTotalsDay(x)[y];
             }
         }
         return totals;
@@ -363,7 +379,7 @@ public class Lifemeter extends Activity {
         }
 
         for (int x=dayBegin; x<=dayEnd; x++) {
-            lineData[x-dayBegin] = calculateTotalsDay(x,activityList)[activityId];
+            lineData[x-dayBegin] = calculateTotalsDay(x)[activityId];
         }
 
         return lineData;
