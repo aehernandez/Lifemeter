@@ -62,8 +62,28 @@ public class Lifemeter extends Activity {
 	        System.out.println(totals[x]);
 	    }
 	}
-	
-	// Get the first reference date for which data is available
+
+    /**
+     * BAR GRAPH WIDGET
+     * How to get a list of activities and cumulative times:
+     * Use calculateTotalsPeriod(earlier day, later day)
+     * Earlier day and later day are used depending on the time interval.
+     * The list of activities corresponds in order using getActivityList(use the later day)
+     *
+     * PIE CHART WIDGET
+     * How to get data for pie chart:
+     * Use calculatePieChart(earlier day, later day)
+     * Earlier day and later day are used depending on the time interval.
+     * The list of activities corresponds in order using getActivityList(use the later day)
+     *
+     * LINE GRAPH WIDGET
+     * How to get data for line graph:
+     * Use calculateLineGraph(activity, earlier day, later day)
+     * Earlier day and later day are used depending on the time interval.
+     * The list of activities corresponds in order using getActivityList(use the later day)
+     */
+
+    // Get the first reference date for which data is available
 	public int getFirstDay() {
 	    return 15;
 	}
@@ -132,18 +152,53 @@ public class Lifemeter extends Activity {
 	    }
 	    return totals;
 	}
-	
-	// Calculate the number of minutes for a given timeframe inclusive of days
-	public double[] calculateTotalsPeriod(int dayBegin, int dayEnd) {
-	    String[] activityList = getActivityList(dayEnd);
-	    double[] totals = calculateTotalsDay(dayEnd, activityList);
-		    for (int x=dayBegin; x<dayEnd; x++) {
-	        for (int y=0; y<totals.length; y++) {
-	            totals[y] = totals[y] + calculateTotalsDay(x, activityList)[y];
-	        }
-	    }
-    	return totals;
-	}
+
+    // Calculate the number of minutes for a given timeframe inclusive of days
+    public double[] calculateTotalsPeriod(int dayBegin, int dayEnd) {
+        String[] activityList = getActivityList(dayEnd);
+        double[] totals = calculateTotalsDay(dayEnd, activityList);
+        for (int x=dayBegin; x<dayEnd; x++) {
+            for (int y=0; y<totals.length; y++) {
+                totals[y] = totals[y] + calculateTotalsDay(x, activityList)[y];
+            }
+        }
+        return totals;
+    }
+
+    // Calculate the percentage of the whole given a array of number of minutes
+    public double[] calculatePieChart(int dayBegin, int dayEnd) {
+        double total = 0.00;
+        double[] totals = calculateTotalsPeriod(dayBegin, dayEnd);
+        double[] percentages = new double[totals.length];
+        for (int x=0; x<totals.length; x++) {
+            total = total + totals[x];
+        }
+
+        for (int x=0; x<totals.length; x++) {
+            percentages[x] = totals[x]/total*100;
+        }
+
+        return percentages;
+    }
+
+    // Returns a list of minutes in chronological order for a specific activity and timeframe inclusive
+    public double[] calculateLineGraph(String activity, int dayBegin, int dayEnd) {
+        int activityId = 0;
+        double[] lineData = new double[dayEnd - dayBegin + 1];
+
+        String[] activityList = getActivityList(dayEnd);
+        for (int x=0; x<activityList.length; x++) {
+            if (activityList[x].equals(activity)) {
+                activityId = x;
+            }
+        }
+
+        for (int x=dayBegin; x<=dayEnd; x++) {
+            lineData[x-dayBegin] = calculateTotalsDay(x,activityList)[activityId];
+        }
+
+        return lineData;
+    }
 
 }
 
