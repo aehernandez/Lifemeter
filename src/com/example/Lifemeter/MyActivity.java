@@ -11,6 +11,12 @@ public class MyActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        double[] totals = calculateTotalsPeriod(17,19);
+        String[] categories = getActivityList(17);
+        for (int x=0; x<totals.length; x++) {
+            System.out.println(categories[x]);
+            System.out.println(totals[x]);
+        }
     }
 
     // Get the first reference date for which data is available
@@ -58,6 +64,40 @@ public class MyActivity extends Activity {
         return fakeArray;
     }
 
-    //
+    // Calculate the number of minutes of each category for a day
+    public double[] calculateTotalsDay(int day, String[] activityList) {
+
+
+        double[] timeList = getTimeList(day);
+
+        String[] categories = getActivityList(day);
+        double[] totals;
+        totals = new double[categories.length];
+        for (int x=0; x<totals.length; x++) {
+            totals[x] = 0.00;
+        }
+
+        int amount = categories.length;
+        for (int x=0; x<amount; x++) {
+            for (int y=0; y<activityList.length; y++) {
+                if (activityList[y].equals(categories[x])) {
+                    totals[x] = totals[x] + timeList[y];
+                }
+            }
+        }
+        return totals;
+    }
+
+    // Calculate the number of minutes for a given timeframe inclusive of days
+    public double[] calculateTotalsPeriod(int dayBegin, int dayEnd) {
+        String[] activityList = getActivityList(dayEnd);
+        double[] totals = calculateTotalsDay(dayEnd, activityList);
+        for (int x=dayBegin; x<dayEnd; x++) {
+            for (int y=0; y<totals.length; y++) {
+                totals[y] = totals[y] + calculateTotalsDay(x)[y];
+            }
+        }
+        return totals;
+    }
 
 }

@@ -2,15 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2cafe933-5953-4869-adfb-56cf7ce6e0d6" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/Lifemeter/MyActivity.java" afterPath="$PROJECT_DIR$/src/com/example/Lifemeter/MyActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Lifemeter.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="$PROJECT_DIR$/res/layout/main.xml" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378516043389" ignored="false" />
     <file path="$PROJECT_DIR$/res/values/strings.xml" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378516043389" ignored="false" />
-    <file path="/Dummy.txt" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378525497488" ignored="false" />
+    <file path="/Dummy.txt" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378525527482" ignored="false" />
     <file path="/fragment.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378518417731" ignored="false" />
-    <file path="/MyActivity.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378523301574" ignored="false" />
+    <file path="/MyActivity.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378532136073" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +75,7 @@
       <file leaf-file-name="MyActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/MyActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="45" selection-start="1674" selection-end="1674" vertical-scroll-proportion="0.929003">
+            <state line="66" column="38" selection-start="1973" selection-end="1973" vertical-scroll-proportion="2.2780373">
               <folding />
             </state>
           </provider>
@@ -112,8 +113,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="368" />
-    <option name="y" value="182" />
+    <option name="x" value="496" />
+    <option name="y" value="269" />
     <option name="width" value="1438" />
     <option name="height" value="835" />
   </component>
@@ -379,12 +380,16 @@
       <created>1378525513496</created>
       <updated>1378525513496</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added some functions for reading the database">
+      <created>1378525529579</created>
+      <updated>1378525529579</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="368" y="182" width="1438" height="835" extended-state="0" />
-    <editor active="true" />
+    <frame x="496" y="269" width="1438" height="835" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -395,13 +400,13 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3272727" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.67147434" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23994254" sideWeight="0.67132866" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28671327" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23994254" sideWeight="0.6727273" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28531468" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -484,7 +489,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/MyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="45" selection-start="1674" selection-end="1674" vertical-scroll-proportion="0.929003">
+        <state line="66" column="38" selection-start="1973" selection-end="1973" vertical-scroll-proportion="2.2780373">
           <folding />
         </state>
       </provider>
