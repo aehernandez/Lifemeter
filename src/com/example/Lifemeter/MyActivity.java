@@ -94,7 +94,7 @@ public class MyActivity extends Activity {
         double[] totals = calculateTotalsDay(dayEnd, activityList);
         for (int x=dayBegin; x<dayEnd; x++) {
             for (int y=0; y<totals.length; y++) {
-                totals[y] = totals[y] + calculateTotalsDay(x)[y];
+                totals[y] = totals[y] + calculateTotalsDay(x, activityList)[y];
             }
         }
         return totals;
