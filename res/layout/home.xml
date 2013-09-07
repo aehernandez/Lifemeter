@@ -1,12 +1,279 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    <TextView
-        android:layout_width="wrap_content"
+<?xml version="1.0" encoding="utf-8"?>    
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    <ImageView 
+        android:id="@+id/home_background"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:text="Tupac tho" />
-</LinearLayout>
+        android:scaleType="fitXY"
+        android:src="@drawable/home_background"
+        android:contentDescription="@string/desc"/>  
+        
+     <LinearLayout
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:paddingTop="25dp"
+         >
+         
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="fill_parent"
+          android:orientation="vertical"
+          android:paddingLeft="140dp"
+          >
+          <TextView  
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:textSize="16sp"
+        	android:text="Current Activity"/>
+          <TextView
+              android:id="@+id/current_activity" 
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:textStyle="bold"
+              android:textSize="37dp"
+              android:text="Shopping"
+              />
+          <TextView 
+              android:id="@+id/time_elapsed"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:textSize="15sp"
+              android:text="00:00:00"
+              />"
+          
+      </LinearLayout>"
+     
+     </LinearLayout>
+     
+     <RelativeLayout 
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:paddingTop="168dp"
+         android:paddingLeft="25dp"
+         android:paddingRight="25dp">
+         
+         <TextView
+             android:id="@+id/this_week" 
+             android:text="This Week"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:textStyle="bold"
+             android:textSize="23sp"
+             />
+         
+         <LinearLayout
+             android:layout_height="wrap_content"
+             android:layout_width="fill_parent"
+             android:orientation="vertical"
+             android:layout_below="@+id/this_week"
+             android:paddingTop="25dp"
+             >
+          <RelativeLayout
+             android:layout_height="wrap_content"
+             android:layout_width="fill_parent"
+             android:orientation="vertical"
+             android:id="@+id/first_texts"
+             >
+          
+           <TextView
+               android:id="@+id/activity1"
+               android:layout_height="wrap_content"
+               android:layout_width="wrap_content"
+               android:text="Shopping"
+               android:textStyle="bold"
+               android:textSize="18sp"
+               android:layout_alignParentLeft="true"
+               />
+           
+			<TextView
+               android:id="@+id/time1"
+               android:layout_height="wrap_content"
+               android:layout_width="wrap_content"
+               android:text="3.4hrs"
+               android:textSize="18sp"
+               android:layout_alignParentRight="true"
+               />
+			                  
+             </RelativeLayout>
+           <ProgressBar 
+               android:id="@+id/first_progress_bar"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               style="?android:attr/progressBarStyleHorizontal"
+               />"
+             
+          </LinearLayout>
+          
+		<LinearLayout
+             android:layout_height="wrap_content"
+             android:layout_width="fill_parent"
+             android:orientation="vertical"
+             android:paddingTop="110dp"
+             >
+          <RelativeLayout
+             android:layout_height="wrap_content"
+             android:layout_width="fill_parent"
+             android:orientation="vertical"
+             android:id="@+id/second_texts"
+             >
+          
+           <TextView
+               android:id="@+id/activity2"
+               android:layout_height="wrap_content"
+               android:layout_width="wrap_content"
+               android:text="Gym"
+               android:textStyle="bold"
+               android:textSize="18sp"
+               android:layout_alignParentLeft="true"
+               />
+           
+			<TextView
+               android:id="@+id/time2"
+               android:layout_height="wrap_content"
+               android:layout_width="wrap_content"
+               android:text="2.3hrs"
+               android:textSize="18sp"
+               android:layout_alignParentRight="true"
+               />
+			                  
+             </RelativeLayout>
+           <ProgressBar 
+               android:id="@+id/second_progress_bar"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               style="?android:attr/progressBarStyleHorizontal"
+               />
+             
+          </LinearLayout>  
+          
+		<LinearLayout
+             android:layout_height="wrap_content"
+             android:layout_width="fill_parent"
+             android:orientation="vertical"
+             android:paddingTop="170dp"
+             >
+          <RelativeLayout
+             android:layout_height="wrap_content"
+             android:layout_width="fill_parent"
+             android:orientation="vertical"
+             android:id="@+id/third_texts"
+             >
+          
+           <TextView
+               android:id="@+id/activity3"
+               android:layout_height="wrap_content"
+               android:layout_width="wrap_content"
+               android:text="Eating"
+               android:textStyle="bold"
+               android:textSize="18sp"
+               android:layout_alignParentLeft="true"
+               />
+           
+			<TextView
+               android:id="@+id/time3"
+               android:layout_height="wrap_content"
+               android:layout_width="wrap_content"
+               android:text="1.0hrs"
+               android:textSize="18sp"
+               android:layout_alignParentRight="true"
+               />
+			                  
+             </RelativeLayout>
+           <ProgressBar 
+               android:id="@+id/third_progress_bar"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               style="?android:attr/progressBarStyleHorizontal"
+               />
+             
+          </LinearLayout>         
+         
+		<LinearLayout
+             android:layout_height="wrap_content"
+             android:layout_width="fill_parent"
+             android:orientation="vertical"
+             android:paddingTop="230dp"
+             >
+          <RelativeLayout
+             android:layout_height="wrap_content"
+             android:layout_width="fill_parent"
+             android:orientation="vertical"
+             android:id="@+id/fourth_texts"
+             >
+          
+           <TextView
+               android:id="@+id/activity4"
+               android:layout_height="wrap_content"
+               android:layout_width="wrap_content"
+               android:text="Home"
+               android:textStyle="bold"
+               android:textSize="18sp"
+               android:layout_alignParentLeft="true"
+               />
+           
+			<TextView
+               android:id="@+id/time4"
+               android:layout_height="wrap_content"
+               android:layout_width="wrap_content"
+               android:text="0.4hrs"
+               android:textSize="18sp"
+               android:layout_alignParentRight="true"
+               />
+			                  
+             </RelativeLayout>
+           <ProgressBar 
+               android:id="@+id/fourth_progress_bar"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               style="?android:attr/progressBarStyleHorizontal"
+               />
+             
+          </LinearLayout> 
+          <LinearLayout
+             android:layout_height="wrap_content"
+             android:layout_width="fill_parent"
+             android:orientation="vertical"
+             android:paddingTop="290dp"
+             >
+          <RelativeLayout
+             android:layout_height="wrap_content"
+             android:layout_width="fill_parent"
+             android:orientation="vertical"
+             android:id="@+id/fifth_texts"
+             >
+          
+           <TextView
+               android:id="@+id/activity5"
+               android:layout_height="wrap_content"
+               android:layout_width="wrap_content"
+               android:text="Transit"
+               android:textStyle="bold"
+               android:textSize="18sp"
+               android:layout_alignParentLeft="true"
+               />
+           
+			<TextView
+               android:id="@+id/time5"
+               android:layout_height="wrap_content"
+               android:layout_width="wrap_content"
+               android:text="0.4hrs"
+               android:textSize="18sp"
+               android:layout_alignParentRight="true"
+               />
+			                  
+             </RelativeLayout>
+           <ProgressBar 
+               android:id="@+id/fifth_progress_bar"
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content"
+               style="?android:attr/progressBarStyleHorizontal"
+               />
+             
+          </LinearLayout>             
+     </RelativeLayout>
+</FrameLayout>
+
