@@ -39,3 +39,5 @@ public class DbList extends SQLiteOpenHelper {
 	}
 
 }
+
+}
