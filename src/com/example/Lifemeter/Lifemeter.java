@@ -1,5 +1,7 @@
 package com.example.Lifemeter;
 
+import java.util.Calendar;
+
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.Activity;
@@ -13,19 +15,31 @@ import android.content.IntentFilter;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-
-import java.util.*;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class Lifemeter extends Activity {
 
-    //db object variables
-    public SQLiteDatabase database;
-    public DbList sampledb;
-    public DbClass GeoFenceDb; 
-
+    private SQLiteDatabase database;
+    private DbList sampledb;
     //Location classes
     public GPSLocation gps;
     private GeofenceBroadcast geofenceReceiver;
+
+    private TextView currentActivity;
+    private TextView timeElapsed;
+    private ProgressBar firstBar;
+    private ProgressBar secondBar;
+    private ProgressBar thirdBar;
+    private ProgressBar fourthBar;
+    private ProgressBar fifthBar;
+    private HomeTab homeFragment;
+    private AnalyticsTab analyticsFragment;
+    private GoalsTab goalsFragment;
+    private SettingsTab settingsFragment;
+    
+    private TextView [] topActivities = new TextView[5];
+    private TextView [] topTimes = new TextView[5];
 
     /**
      * Called when the activity is first created.
@@ -37,10 +51,6 @@ public class Lifemeter extends Activity {
 
         //Handles all the GPS pings and Geofencing capabilities
         gps = new GPSLocation();
-        
-        //Creates List db
-        DbList db = new DbList(this);
-        db.Insert(db,"Smoking");
 
         //Uses BroadcastReceiver in order to update the last entered Geofence for use in the frontend
         IntentFilter locationFilter = new IntentFilter(GeofenceBroadcast.ACTION_REP);
@@ -59,23 +69,23 @@ public class Lifemeter extends Activity {
 
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        Fragment homeFragment = new HomeTab();
+        
+        homeFragment = new HomeTab();
         fragmentTransaction.add(R.id.fragment_container, homeFragment);
         tabA.setTabListener(new CustomTabListener(homeFragment));
         bar.addTab(tabA);
-
-        Fragment analyticsFragment = new AnalyticsTab();
+        
+        analyticsFragment = new AnalyticsTab();
         fragmentTransaction.add(R.id.fragment_container, analyticsFragment);
         tabB.setTabListener(new CustomTabListener(analyticsFragment));
         bar.addTab(tabB);
-
-        Fragment goalsFragment = new GoalsTab();
+        
+        goalsFragment = new GoalsTab();
         fragmentTransaction.add(R.id.fragment_container, goalsFragment);
         tabC.setTabListener(new CustomTabListener(goalsFragment));
         bar.addTab(tabC);
-
-        Fragment settingsFragment = new SettingsTab();
+        
+        settingsFragment = new SettingsTab();
         fragmentTransaction.add(R.id.fragment_container, settingsFragment);
         tabD.setTabListener(new CustomTabListener(settingsFragment));
         bar.addTab(tabD);
@@ -96,6 +106,34 @@ public class Lifemeter extends Activity {
         today.set(Calendar.HOUR_OF_DAY,0);
         long msSince = today.getTimeInMillis();
         return (int)(msSince/86400000);
+    }
+
+    public void updateHome() {
+        String[] activities = getActivityList(whatToday());
+        double[] weeklyTotals = new double[activities.length];
+
+        if (whatToday() - getFirstDay()>5) {
+            weeklyTotals = calculateTotalsPeriod(whatToday()-6,whatToday());
+        } else {
+            weeklyTotals = calculateTotalsPeriod(getFirstDay(),whatToday());
+        }
+
+        double tempTime;
+        String tempCat = new String();
+
+        // Basic bubble sort
+        for (int y=0; y<6; y++) {
+            for (int x=0; x<(weeklyTotals.length-1); x++) {
+                if (weeklyTotals[x]<weeklyTotals[x+1]) {
+                    tempTime = weeklyTotals[x];
+                    tempCat = activities[x];
+                    weeklyTotals[x] = weeklyTotals[x+1];
+                    activities[x] = activities [x+1];
+                    weeklyTotals[x+1] = tempTime;
+                    activities[x+1] = tempCat;
+                }
+            }
+        }
     }
 
     /**
@@ -125,7 +163,7 @@ public class Lifemeter extends Activity {
 
     // Get the list of activities being tracked
     public String[] getActivitiesTracked() {
-        String[] FakeArray = new String[100000];
+        String[] FakeArray = new String[100];
         Cursor CursorArray;
         String activity = "activity";
         CursorArray = database.query(sampledb.TableName, new String[] {activity}, null, null, null, null, null, null);
@@ -136,63 +174,6 @@ public class Lifemeter extends Activity {
         }
         return FakeArray;
     }
-    
-	//GeoFence Data retrieval for radius for Alain
-	public double[] getRadius(){
-		double[] FakeRad = new double[1000000];
-		Cursor CursorArray;
-		String rad = "radius";
-		CursorArray = database.query(GeoFenceDb.TableName, new String[] {rad},null, null, null, null, null, null); 
-		
-		CursorArray.moveToFirst();
-		for (int i=0; i < CursorArray.getCount(); i++){
-			FakeRad[i] = CursorArray.getDouble(3);
-		}
-	    return FakeRad;
-	}
-
-	//GeoFence Data retrieval for lattitude for Alain
-	public double[] getLatt(){
-		double[] FakeLatt = new double[1000000];
-		Cursor CursorArray;
-		String l = "latt";
-		CursorArray = database.query(GeoFenceDb.TableName, new String[] {l},null, null, null, null, null, null);
-		
-
-		CursorArray.moveToFirst();
-		for (int i=0; i < CursorArray.getCount(); i++){
-			FakeLatt[i] = CursorArray.getDouble(1);
-		}
-	    return FakeLatt;
-	}
-
-	//GeoFence Data retrieval for longittude for Alain
-	public double[] getLongt(){
-		double[] FakeLongt = new double[1000000];
-		Cursor CursorArray;
-		String Lt = "longt";
-		CursorArray = database.query(GeoFenceDb.TableName, new String[] {Lt},null, null, null, null, null, null); 
-		
-		CursorArray.moveToFirst();
-		for (int i=0; i < CursorArray.getCount(); i++){
-			FakeLongt[i] = CursorArray.getDouble(2);
-		}
-	    return FakeLongt;
-	}
-
-	//GeoFence Data retrieval for ID for Alain
-	public String[] getId(){
-		String[] FakeId = new String[1000000];
-		Cursor CursorArray;
-		String Id = "id";
-		CursorArray = database.query(GeoFenceDb.TableName, new String[] {Id},null, null, null, null, null, null);
-		
-		CursorArray.moveToFirst();
-		for (int i=0; i < CursorArray.getCount(); i++){
-			FakeId[i] = CursorArray.getString(4);
-		}
-	    return FakeId;
-	}
 
 
     // Get the activities in chronological order for a given day
@@ -244,6 +225,35 @@ public class Lifemeter extends Activity {
         }
         return totals;
     }
+    
+	public void onResume() {
+		super.onResume();
+		currentActivity = (TextView) homeFragment.getView().findViewById(R.id.current_activity);
+		timeElapsed = (TextView) homeFragment.getView().findViewById(R.id.time_elapsed);
+		firstBar=(ProgressBar) homeFragment.getView().findViewById(R.id.first_progress_bar);
+		firstBar.setMax(100);
+		firstBar.setProgress(57);
+		secondBar=(ProgressBar) homeFragment.getView().findViewById(R.id.second_progress_bar);
+		secondBar.setMax(100);
+		secondBar.setProgress(40);
+		thirdBar=(ProgressBar) homeFragment.getView().findViewById(R.id.third_progress_bar);
+		thirdBar.setMax(100);
+		thirdBar.setProgress(28);
+		fourthBar=(ProgressBar) homeFragment.getView().findViewById(R.id.fourth_progress_bar);
+		fourthBar.setMax(100);
+		fourthBar.setProgress(13);
+		fifthBar=(ProgressBar) homeFragment.getView().findViewById(R.id.fifth_progress_bar);
+		fifthBar.setMax(100);
+		fifthBar.setProgress(4);
+		for(int j=0;j<topActivities.length;j++) {
+			String id = "activity"+(j+1);
+			int resID = getResources().getIdentifier(id, "id", "com.example.Lifemeter");
+			topActivities[j] = (TextView)homeFragment.getView().findViewById(resID);
+			id = "time"+(j+1);
+			resID= getResources().getIdentifier(id,"id","com.example.Lifemeter");
+			topTimes[j]=(TextView)homeFragment.getView().findViewById(resID);
+		}
+	}
 
     // Calculate the number of minutes for a given timeframe inclusive of days
     public double[] calculateTotalsPeriod(int dayBegin, int dayEnd) {
