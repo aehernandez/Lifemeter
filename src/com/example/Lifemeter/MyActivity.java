@@ -1,9 +1,17 @@
 package com.example.Lifemeter;
 
+import android.content.Context; 
+import android.database.sqlite.*;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
+import android.util.*;
 import android.app.Activity;
 import android.os.Bundle;
 
 public class MyActivity extends Activity {
+    
+    private SQLiteDatabase database;
+    private DbList sampledb; 
+    
     /**
      * Called when the activity is first created.
      */
@@ -28,7 +36,7 @@ public class MyActivity extends Activity {
     public String[] getActivitiesTracked() {
         String[] fakeArray;
         fakeArray = new String[7];
-        fakeArray[0] = "Home";
+        fakeArray = database.query(sampledb.TableName, new String[] {id, activity}, null, null);
         fakeArray[1] = "Work";
         fakeArray[2] = "Eating";
         fakeArray[3] = "Gym";
