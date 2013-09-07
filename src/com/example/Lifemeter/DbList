@@ -21,13 +21,13 @@ public class DbList extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
-		db.execSQL("CREATE TABLE " + TableName + "(activity TEXT);");
+		db.execSQL("CREATE TABLE " + TableName + "(id INTEGER, activity TEXT);");
 	}
 	
 
 	public void Insert(SQLiteDatabase db, String activity){
 
-		db.execSQL("INSERT INTO TableName ("+activity+")" +
+		db.execSQL("INSERT INTO TableName (id integer primary key autoincrement,"+activity+")" +
 			       "VALUES (activity);");
 	}
 
