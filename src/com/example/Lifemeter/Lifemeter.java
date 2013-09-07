@@ -92,6 +92,34 @@ public class Lifemeter extends Activity {
         return (int)(msSince/86400000);
     }
 
+    public void updateHome() {
+        String[] activities = getActivityList(whatToday());
+        double[] weeklyTotals = new double[activities.length];
+
+        if (whatToday() - getFirstDay()>5) {
+            weeklyTotals = calculateTotalsPeriod(whatToday()-6,whatToday());
+        } else {
+            weeklyTotals = calculateTotalsPeriod(getFirstDay(),whatToday());
+        }
+
+        double tempTime;
+        String tempCat = new String();
+
+        // Basic bubble sort
+        for (int y=0; y<6; y++) {
+            for (int x=0; x<(weeklyTotals.length-1); x++) {
+                if (weeklyTotals[x]<weeklyTotals[x+1]) {
+                    tempTime = weeklyTotals[x];
+                    tempCat = activities[x];
+                    weeklyTotals[x] = weeklyTotals[x+1];
+                    activities[x] = activities [x+1];
+                    weeklyTotals[x+1] = tempTime;
+                    activities[x+1] = tempCat;
+                }
+            }
+        }
+    }
+
     /**
      * BAR GRAPH WIDGET
      * How to get a list of activities and cumulative times:
