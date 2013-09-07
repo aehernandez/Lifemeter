@@ -98,7 +98,7 @@ public class Lifemeter extends Activity {
         }
     }
 
-    public int whatToday() {
+    public static int whatToday() {
         Calendar today = Calendar.getInstance();
         today.set(Calendar.MILLISECOND,0);
         today.set(Calendar.SECOND,0);
@@ -177,7 +177,7 @@ public class Lifemeter extends Activity {
 
 
     // Get the activities in chronological order for a given day
-    public String[] getActivityList(int day) {
+    public static String[] getActivityList(int day) {
         String[] fakeArray;
         fakeArray = new String[6];
         fakeArray[0] = "Home";
@@ -190,7 +190,7 @@ public class Lifemeter extends Activity {
     }
 
     // Get the activity times in chronological order for a given day
-    public double[] getTimeList(int day) {
+    public static double[] getTimeList(int day) {
         double[] fakeArray;
         fakeArray = new double[6];
         fakeArray[0] = 38.56;
@@ -203,7 +203,7 @@ public class Lifemeter extends Activity {
     }
 
     // Calculate the number of minutes of each category for a day
-    public double[] calculateTotalsDay(int day, String[] activityList) {
+    public static double[] calculateTotalsDay(int day, String[] activityList) {
 
 
         double[] timeList = getTimeList(day);
@@ -256,7 +256,7 @@ public class Lifemeter extends Activity {
 	}
 
     // Calculate the number of minutes for a given timeframe inclusive of days
-    public double[] calculateTotalsPeriod(int dayBegin, int dayEnd) {
+    public static double[] calculateTotalsPeriod(int dayBegin, int dayEnd) {
         String[] activityList = getActivityList(dayEnd);
         double[] totals = calculateTotalsDay(dayEnd, activityList);
         for (int x=dayBegin; x<dayEnd; x++) {
@@ -268,7 +268,7 @@ public class Lifemeter extends Activity {
     }
 
     // Calculate the percentage of the whole given a array of number of minutes
-    public double[] calculatePieChart(int dayBegin, int dayEnd) {
+    public static double[] calculatePieChart(int dayBegin, int dayEnd) {
         double total = 0.00;
         double[] totals = calculateTotalsPeriod(dayBegin, dayEnd);
         double[] percentages = new double[totals.length];

@@ -4,10 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:text="Tupac 2" />
-
+     <com.example.Lifemeter.AnalyticsBackground
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         />"
+        
 </LinearLayout>
