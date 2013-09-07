@@ -60,11 +60,18 @@ public class MyActivity extends Activity {
 
     // Get the list of activities being tracked
     public String[] getActivitiesTracked() {
-        String[] fakeArray;
-        //fakeArray = new String[7];
-        fakeArray = database.query(sampledb.TableName, new String[] {id, activity}, null, null);
-        return fakeArray;
+    	String[] FakeArray = new String[100]; 
+        Cursor CursorArray;
+        String activity = "activity";
+		CursorArray = database.query(sampledb.TableName, new String[] {activity}, null, null, null, null, null, null);
+		
+		CursorArray.moveToFirst();
+		for (int i=0; i < CursorArray.getCount(); i++){
+			FakeArray[i] = CursorArray.getString(1);
+		}
+        return FakeArray;
     }
+   
 
     // Get the activities in chronological order for a given day
     public String[] getActivityList(int day) {
@@ -77,7 +84,7 @@ public class MyActivity extends Activity {
         fakeArray[4] = "Travel";
         fakeArray[5] = "Shopping";
         return fakeArray;
-    }
+    }4
 
     // Get the activity times in chronological order for a given day
     public double[] getTimeList(int day) {
