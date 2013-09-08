@@ -218,15 +218,11 @@ public class Lifemeter extends Activity {
         //    FakeArray[i] = CursorArray.getString(1);
         //}
        // return FakeArray;
-    	String[] fakeArray = new String[7];
-    	fakeArray[0] = "Home";
-    	fakeArray[1] = "Work";
-    	fakeArray[2] = "Gym";
-    	fakeArray[3] = "Shopping";
-    	fakeArray[4] = "Eating";
-    	fakeArray[5] = "Transit";
-    	fakeArray[6] = "Studying";
-    	return fakeArray;
+    	String[] activityArray = new String[10];
+    	
+    	activityArray = data.Places(); 
+    	
+    	return activityArray;
     }
 
 
@@ -301,18 +297,11 @@ public class Lifemeter extends Activity {
 		//for (int i=0; i < CursorArray.getCount(); i++){
 		//	fakeArray[i] = CursorArray.getString(0);
 		//}
-    	String[] fakeArray = new String[10];
-    	fakeArray[0] = "Home";
-    	fakeArray[1] = "Work";
-    	fakeArray[2] = "Home";
-    	fakeArray[3] = "Shopping";
-    	fakeArray[4] = "Eating";
-    	fakeArray[5] = "Transit";
-    	fakeArray[6] = "Home";
-    	fakeArray[7] = "Studying";
-    	fakeArray[8] = "Work";
-    	fakeArray[9] = "Home";
-	    return fakeArray;
+        String[] activityArray = new String[10];
+    	
+    	activityArray = data.Places(); 
+    	
+    	return activityArray;
 	}
     
     // Get the activity times in chronological order for a given day
@@ -327,18 +316,23 @@ public class Lifemeter extends Activity {
 		//for (int i=0; i < CursorArray.getCount(); i++){
 		//	fakeArray[i] = CursorArray.getDouble(0);
 		//}
-    	double[] fakeArray = new double[10];
-    	fakeArray[0] = 22.4;
-    	fakeArray[1] = 758.9;
-    	fakeArray[2] = 100.0;
-    	fakeArray[3] = 253.4;
-    	fakeArray[4] = 90.3;
-    	fakeArray[5] = 20.1;
-    	fakeArray[6] = 134.5;
-    	fakeArray[7] = 50.6;
-    	fakeArray[8] = 25.4;
-    	fakeArray[9] = 60.54;
-    	return fakeArray;
+		
+	
+    	double[][] timespent = new double[10][400];
+    	
+    	timespent = data.DataRandomizer(); 
+    	double[] timeArray = new double[10];
+    	timeArray[0] = timespent[0][0];
+    	timeArray[1] = timespent[0][1];
+    	timeArray[2] = timespent[0][2];
+    	timeArray[3] = timespent[0][3];
+    	timeArray[4] = timespent[0][4];
+    	timeArray[5] = timespent[0][5];
+    	timeArray[6] = timespent[0][6];
+    	timeArray[7] = timespent[0][7];;
+    	timeArray[8] = timespent[0][8];;
+    	timeArray[9] = timespent[0][9];;
+    	return timeArray;
         
     }
 
