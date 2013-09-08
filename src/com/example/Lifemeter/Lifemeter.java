@@ -12,10 +12,10 @@ import android.app.FragmentTransaction;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -41,6 +41,7 @@ public class Lifemeter extends Activity {
     private GoalsTab goalsFragment;
     private SettingsTab settingsFragment;
     private static Context context;
+    public CountDownTimer count;
     
     private static TextView [] topActivities = new TextView[5];
     private static TextView [] topTimes = new TextView[5];
@@ -100,8 +101,22 @@ public class Lifemeter extends Activity {
         tabD.setTabListener(new CustomTabListener(settingsFragment));
         bar.addTab(tabD);
         
+        count=new CountDownTimer(1000,100) {
+			@Override
+			public void onFinish() {
+				read();
+			}
+			@Override
+			public void onTick(long millisUntilFinished) {
+			}
+        }.start();
+        
     }
 
+    public void read() {
+    	count.start();
+    }
+    
     public void onResume() {
         super.onResume();
         currentActivity = (TextView) homeFragment.getView().findViewById(R.id.current_activity);
@@ -219,14 +234,7 @@ public class Lifemeter extends Activity {
         //}
        // return FakeArray;
     	String[] activityArray = new String[10];
-    	
-<<<<<<< HEAD
     	activityArray = Data.PlacesTracked(); 
-
-=======
-
-    	activityArray = data.PlacesTracked(); 
->>>>>>> a1c6b0fa2118dd90bc3c23208dce48063b0400ae
     	
     	return activityArray;
     }
@@ -305,7 +313,7 @@ public class Lifemeter extends Activity {
 		//}
         String[] activityArray = new String[10];
     	
-    	activityArray = data.Places(); 
+    	activityArray = Data.Places(); 
     	
     	return activityArray;
 	}
@@ -326,7 +334,7 @@ public class Lifemeter extends Activity {
 	
     	double[][] timespent = new double[10][400];
     	
-    	timespent = data.DataRandomizer(); 
+    	timespent = Data.DataRandomizer(); 
     	double[] timeArray = new double[10];
     	timeArray[0] = timespent[0][0];
     	timeArray[1] = timespent[0][1];
@@ -395,22 +403,45 @@ public class Lifemeter extends Activity {
         return percentages;
     }
 
+    public static double lineHelper(String activity, int day) {
+    	double totalMinutes = 0.0;
+    	double[] tempArray = getTimeList(day);
+    	String[] tempName = getActivityList(day);
+    	for (int x=0; x<tempName.length; x++) {
+    		if (tempName[x].equals(activity)) {
+    			totalMinutes = totalMinutes + tempArray[x];
+    		}
+    	}
+    	return totalMinutes;
+    }
+    
+    
     // Returns a list of minutes in chronological order for a specific activity and timeframe inclusive
-    public double[] calculateLineGraph(String activity, int dayBegin, int dayEnd) {
-        int activityId = 0;
-        double[] lineData = new double[dayEnd - dayBegin + 1];
-
-        String[] activityList = getActivityList(dayEnd);
-        for (int x=0; x<activityList.length; x++) {
-            if (activityList[x].equals(activity)) {
-                activityId = x;
-            }
+    // 0 = week, 1 = month, 2 = year
+    public static double[] calculateLineGraph(String activity, int timePeriod) {
+        double[] lineData;
+        int today = whatToday();
+        if (timePeriod == 0) {
+		lineData = new double[7];
+		for (int x = (lineData.length-1); x>=0; x--) {
+			lineData[x] = lineHelper(activity, today-x);
+		}
+        } else if (timePeriod == 1) {
+        	lineData = new double[30];
+		for (int x = (lineData.length-1); x>=0; x--) {
+			lineData[x] = lineHelper(activity, today-x);
+		}
+        } else {
+        	lineData = new double[12];
+        	double sum;
+        	for (int x = 11; x>=0; x--) {
+        		sum = 0.0;
+        		for (int y = 0; y<30; y++) {
+        			sum = sum + lineHelper(activity, today-x*30-y);
+        		}
+        		lineData[x] = sum;
+        	}
         }
-
-        for (int x=dayBegin; x<=dayEnd; x++) {
-            lineData[x-dayBegin] = calculateTotalsDay(x)[activityId];
-        }
-
         return lineData;
     }
 

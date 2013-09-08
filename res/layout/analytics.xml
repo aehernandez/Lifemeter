@@ -58,6 +58,35 @@
          	/>
      </LinearLayout>
      
+     <TextView 
+         android:id="@+id/week"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginBottom="75dp"
+         android:layout_marginLeft="58dp"
+         android:text="@string/week"
+         android:layout_gravity="bottom"
+         android:textSize="16sp"
+         />
+     <TextView 
+         android:id="@+id/max_value"
+         android:layout_width="100px"
+         android:layout_height="wrap_content"
+         android:layout_marginLeft="50px"
+         android:layout_marginTop="292dp"
+         android:text="520"
+         android:textSize="12sp"
+         android:gravity="center"/>"
+     
+     <Spinner
+         android:id="@+id/activity"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity="bottom|right"
+         android:layout_marginBottom="280dp"
+         android:layout_marginRight="22dp"
+         />
+     
      <Spinner
          android:id="@+id/time_interval"
          android:layout_width="wrap_content"

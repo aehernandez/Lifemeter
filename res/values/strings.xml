@@ -6,4 +6,21 @@
         <item>Month</item>
         <item>Year</item>
     </string-array>
+    <string-array name="activity">
+        <item>Home</item>
+        <item>Work</item>
+        <item>Gym</item>
+        <item>Shopping</item>
+        <item>Eating</item>
+        <item>Transit</item>
+        <item>Studying</item>
+    </string-array>
+    <string-array name="goals">
+        <item>Gym</item>
+        <item>Study</item>
+        <item>Work/Life</item>
+    </string-array>
+    <string name="week">"1        2        3        4        5        6        7"</string>
+    <string name="month">"    5      10      15      20      25      30"</string>
+    <string name="year">"1   2   3   4   5   6   7   8   9   10  11  12"</string>
 </resources>

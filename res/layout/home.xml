@@ -16,12 +16,18 @@
          android:orientation="horizontal"
          android:paddingTop="25dp"
          >
+     <ImageView
+         android:layout_width="300px"
+         android:layout_height="300px"
+         android:layout_marginLeft="50px"
+         android:src="@drawable/home" 
+          /> 
          
       <LinearLayout
           android:layout_width="wrap_content"
           android:layout_height="fill_parent"
           android:orientation="vertical"
-          android:paddingLeft="140dp"
+          android:paddingLeft="15dp"
           >
           <TextView  
         	android:layout_width="fill_parent"
@@ -34,14 +40,14 @@
               android:layout_height="wrap_content"
               android:textStyle="bold"
               android:textSize="37dp"
-              android:text="Shopping"
+              android:text="Gym"
               />
           <TextView 
               android:id="@+id/time_elapsed"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:textSize="15sp"
-              android:text="00:00:00"
+              android:text="00:29:52"
               />"
           
       </LinearLayout>"
