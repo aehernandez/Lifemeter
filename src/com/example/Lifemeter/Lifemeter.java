@@ -7,7 +7,6 @@ import java.util.TimerTask;
 
 import android.app.*;
 import android.app.ActionBar.Tab;
-<<<<<<< HEAD
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -21,7 +20,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-=======
+
 import android.content.*;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -32,7 +31,7 @@ import android.view.View;
 import android.widget.*;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
->>>>>>> a0936e5272a2a434f90e5ec2cd2495f9d22ebc27
+
 
 public class Lifemeter extends Activity {
 
@@ -43,7 +42,6 @@ public class Lifemeter extends Activity {
 
     //Location classes
     public GPSLocation gps;
-    private GeofenceBroadcast geofenceReceiver;
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     private GeoService.LocalBinder mGeoBinder;
     private ServiceConnection mConnection;
@@ -60,7 +58,6 @@ public class Lifemeter extends Activity {
     private GoalsTab goalsFragment;
     private SettingsTab settingsFragment;
     private static Context context;
-    public CountDownTimer count;
     
     private static TextView [] topActivities = new TextView[5];
     private static TextView [] topTimes = new TextView[5];
@@ -112,12 +109,12 @@ public class Lifemeter extends Activity {
 
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        
+
         homeFragment = new HomeTab();
         fragmentTransaction.add(R.id.fragment_container, homeFragment);
         tabA.setTabListener(new CustomTabListener(homeFragment));
         bar.addTab(tabA);
-        
+
         analyticsFragment = new AnalyticsTab();
         fragmentTransaction.add(R.id.fragment_container, analyticsFragment);
         tabB.setTabListener(new CustomTabListener(analyticsFragment));
@@ -154,18 +151,7 @@ public class Lifemeter extends Activity {
             }
         };
         
-<<<<<<< HEAD
-        count=new CountDownTimer(1000,100) {
-			@Override
-			public void onFinish() {
-				read();
-			}
-			@Override
-			public void onTick(long millisUntilFinished) {
-			}
-        }.start();
-        
-=======
+
         bindService(mIntent, mConnection, BIND_AUTO_CREATE);
         startService(mIntent);
 
@@ -232,7 +218,7 @@ public class Lifemeter extends Activity {
         }
 
         return false;
->>>>>>> a0936e5272a2a434f90e5ec2cd2495f9d22ebc27
+
     }
 
     public void read() {
@@ -375,14 +361,10 @@ public class Lifemeter extends Activity {
         //}
        // return FakeArray;
     	String[] activityArray = new String[10];
-<<<<<<< HEAD
-    	activityArray = Data.PlacesTracked(); 
-    	
-=======
+
     	
     	activityArray = Data.PlacesTracked(); 
 
->>>>>>> a0936e5272a2a434f90e5ec2cd2495f9d22ebc27
     	return activityArray;
     }
 
@@ -460,11 +442,9 @@ public class Lifemeter extends Activity {
 		//}
         String[] activityArray = new String[10];
     	
-<<<<<<< HEAD
-    	activityArray = Data.Places(); 
-=======
+
     	activityArray = Data.Places();
->>>>>>> a0936e5272a2a434f90e5ec2cd2495f9d22ebc27
+
     	
     	return activityArray;
 	}
@@ -485,11 +465,8 @@ public class Lifemeter extends Activity {
 	
     	double[][] timespent = new double[10][400];
     	
-<<<<<<< HEAD
-    	timespent = Data.DataRandomizer(); 
-=======
+
     	timespent = Data.DataRandomizer();
->>>>>>> a0936e5272a2a434f90e5ec2cd2495f9d22ebc27
     	double[] timeArray = new double[10];
     	timeArray[0] = timespent[0][0];
     	timeArray[1] = timespent[0][1];
@@ -556,13 +533,10 @@ public class Lifemeter extends Activity {
 
         return percentages;
     }
-<<<<<<< HEAD
+
 
     public static double lineHelper(String activity, int day) {
-=======
-	
-    public double lineHelper(String activity, int day) {
->>>>>>> a0936e5272a2a434f90e5ec2cd2495f9d22ebc27
+
     	double totalMinutes = 0.0;
     	double[] tempArray = getTimeList(day);
     	String[] tempName = getActivityList(day);
@@ -577,11 +551,9 @@ public class Lifemeter extends Activity {
     
     // Returns a list of minutes in chronological order for a specific activity and timeframe inclusive
     // 0 = week, 1 = month, 2 = year
-<<<<<<< HEAD
+
     public static double[] calculateLineGraph(String activity, int timePeriod) {
-=======
-    public double[] calculateLineGraph(String activity, int timePeriod) {
->>>>>>> a0936e5272a2a434f90e5ec2cd2495f9d22ebc27
+
         double[] lineData;
         int today = whatToday();
         if (timePeriod == 0) {
@@ -604,28 +576,13 @@ public class Lifemeter extends Activity {
         		}
         		lineData[x] = sum;
         	}
-<<<<<<< HEAD
         }
-=======
-        	
-        }
-        
->>>>>>> a0936e5272a2a434f90e5ec2cd2495f9d22ebc27
+
         return lineData;
     }
 
     //Used to broadcast information about the last known Geofence, could be expanded
-    public class GeofenceBroadcast extends BroadcastReceiver {
-        public static final String ACTION_REP = "com.mamlambo.intent.action.MESSAGE_PROCESSED";
 
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String lastGeo = intent.getStringExtra(HandleGeofenceIntentService.UPDATE_LASTGEOFENCE);
-            gps.setLastGeofence(lastGeo);
-
-        }
-
-}
 
 class CustomTabListener implements ActionBar.TabListener {
 

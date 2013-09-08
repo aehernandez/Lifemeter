@@ -39,17 +39,17 @@ public class HandleGeofenceIntentService extends IntentService {
             int transitionType = LocationClient.getGeofenceTransition(intent);
 
             if(transitionType == Geofence.GEOFENCE_TRANSITION_ENTER) {
-
-                //Updates the last known Geofence to the main activity - Lifemeter
-                List<Geofence> triggerList = LocationClient.getTriggeringGeofences(intent);
-
-                String lastGeofence = triggerList.get(triggerList.size() -1).getRequestId();
-
-                Intent broadcastGeofence = new Intent();
-                broadcastGeofence.setAction(Lifemeter.GeofenceBroadcast.ACTION_REP);
-                broadcastGeofence.addCategory(Intent.CATEGORY_DEFAULT);
-                broadcastGeofence.putExtra(UPDATE_LASTGEOFENCE, lastGeofence);
-                sendBroadcast(broadcastGeofence);
+//
+//                //Updates the last known Geofence to the main activity - Lifemeter
+//                List<Geofence> triggerList = LocationClient.getTriggeringGeofences(intent);
+//
+//                String lastGeofence = triggerList.get(triggerList.size() -1).getRequestId();
+//
+//                Intent broadcastGeofence = new Intent();
+//                broadcastGeofence.setAction(Lifemeter.GeofenceBroadcast.ACTION_REP);
+//                broadcastGeofence.addCategory(Intent.CATEGORY_DEFAULT);
+//                broadcastGeofence.putExtra(UPDATE_LASTGEOFENCE, lastGeofence);
+//                sendBroadcast(broadcastGeofence);
 
             }
 
@@ -74,10 +74,6 @@ public class HandleGeofenceIntentService extends IntentService {
                     }
                     if(transitionType == Geofence.GEOFENCE_TRANSITION_EXIT) {
                         Toast.makeText(getApplicationContext(), "LEAVING the Geofence", Toast.LENGTH_SHORT).show();
-                        synchronized (this)
-                        {
-                            startActivity(new Intent(this,ActivityXYZ.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-                        }
 
                     }
                 }
