@@ -33,14 +33,14 @@ public class DbActivities extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
-		db.execSQL("CREATE TABLE " + TableName + "(id INTEGER,day INTEGER, activity TEXT, time REAL);");
+		db.execSQL("CREATE TABLE " + TableName + "(id INTEGER,day INTEGER, activity TEXT, elapsedTime REAL);");
 	}
 	
 
 	public void Insert(int day, String activity, double time){
 
 		db.execSQL("INSERT INTO" +TableName+ " (_id integer primary key autoincrement,"+day+","+activity+","+time+")" +
-			       "VALUES ('id','day','activity','time')");
+			       "VALUES ('id','day','activity','elapsedTime')");
 	}
 
 	@Override

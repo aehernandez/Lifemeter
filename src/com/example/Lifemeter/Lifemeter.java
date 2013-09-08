@@ -2,6 +2,8 @@ package com.example.Lifemeter;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.app.*;
 import android.app.ActionBar.Tab;
@@ -9,9 +11,7 @@ import android.content.*;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
-import android.os.Binder;
-import android.os.Bundle;
-import android.os.IBinder;
+import android.os.*;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
@@ -47,7 +47,14 @@ public class Lifemeter extends Activity {
     
     private static TextView [] topActivities = new TextView[5];
     private static TextView [] topTimes = new TextView[5];
-
+    private CountDownTimer count;
+    private String currentGeofenceId;
+    private String previousGeofenceId;
+    private int currentTime = 0;
+    private int currentSeconds = 0;
+    private int currentMinutes = 0;
+    private Handler mHandler = new Handler();
+    private Runnable read;
 
 
     /**
@@ -108,8 +115,55 @@ public class Lifemeter extends Activity {
         fragmentTransaction.add(R.id.fragment_container, settingsFragment);
         tabD.setTabListener(new CustomTabListener(settingsFragment));
         bar.addTab(tabD);
-        
+
+        read = new Runnable() {
+
+            @Override
+            public void run() {
+                mHandler.postDelayed(read, 1000);
+
+                SharedPreferences settings = getSharedPreferences("SETTINGS", 0);
+                previousGeofenceId = currentGeofenceId;
+                currentGeofenceId = settings.getString("Current Geofence", "Travel");
+
+                if (currentGeofenceId.equals(previousGeofenceId)) {
+                    currentTime++;
+                    currentSeconds = currentTime % 60;
+                    currentMinutes = currentTime / 60;
+                    timeElapsed.setText(String.format("00:%02d:%02d", currentMinutes, currentSeconds));
+
+                } else {
+                    currentTime = 0;
+                    currentActivity.setText(currentGeofenceId);
+                }
+            }
+
+        };
+
+
     }
+
+
+
+//    public void read() {
+//        SharedPreferences settings = getSharedPreferences("SETTINGS",0);
+//        previousGeofenceId = currentGeofenceId;
+//        currentGeofenceId = settings.getString("Current Geofence", "Travel");
+//
+//        if(currentGeofenceId.equals(previousGeofenceId)) {
+//            currentTime++;
+//            currentSeconds = currentTime % 60;
+//            currentMinutes = currentTime/60;
+//            timeElapsed.setText(String.format("00:%02d:%02d", currentMinutes,currentSeconds));
+//
+//        } else {
+//            currentTime = 0;
+//            currentActivity.setText(currentGeofenceId);
+//        }
+//
+//
+//
+//    }
 
     @Override
     protected void onStart() {
@@ -216,6 +270,8 @@ public class Lifemeter extends Activity {
     }
 
     public static void updateHome() {
+
+
         String[] activities = getActivitiesTracked();
         double[] weeklyTotals = new double[activities.length];
 
@@ -241,6 +297,7 @@ public class Lifemeter extends Activity {
                 }
             }
         }
+
 
         firstBar=(ProgressBar) homeFragment.getView().findViewById(R.id.first_progress_bar);
         firstBar.setMax((int)weeklyTotals[0]);
@@ -270,8 +327,10 @@ public class Lifemeter extends Activity {
 
             id = "time"+(j+1);
             resID= context.getResources().getIdentifier(id,"id","com.example.Lifemeter");
+
             topTimes[j]=(TextView)homeFragment.getView().findViewById(resID);
             topTimes[j].setText(hourForm.format(weeklyTotals[j]/60) + " hrs");
+
         }
 
     }
@@ -280,19 +339,19 @@ public class Lifemeter extends Activity {
      * BAR GRAPH WIDGET
      * How to get a list of activities and cumulative times:
      * Use calculateTotalsPeriod(earlier day, later day)
-     * Earlier day and later day are used depending on the time interval.
+     * Earlier day and later day are used depending on the elapsedTime interval.
      * The list of activities corresponds in order using getActivityList(use the later day)
      *
      * PIE CHART WIDGET
      * How to get data for pie chart:
      * Use calculatePieChart(earlier day, later day)
-     * Earlier day and later day are used depending on the time interval.
+     * Earlier day and later day are used depending on the elapsedTime interval.
      * The list of activities corresponds in order using getActivityList(use the later day)
      *
      * LINE GRAPH WIDGET
      * How to get data for line graph:
      * Use calculateLineGraph(activity, earlier day, later day)
-     * Earlier day and later day are used depending on the time interval.
+     * Earlier day and later day are used depending on the elapsedTime interval.
      * The list of activities corresponds in order using getActivityList(use the later day)
      */
 
@@ -416,7 +475,7 @@ public class Lifemeter extends Activity {
         //double[] fakeArray = new double[1000000];
 	    //Cursor CursorArray;
 	    //String Activity = "activity";
-	    //CursorArray = database.rawQuery("SELECT time FROM" +ActivityDb.TableName+ "WHERE day="+day ,null);
+	    //CursorArray = database.rawQuery("SELECT elapsedTime FROM" +ActivityDb.TableName+ "WHERE day="+day ,null);
 	    
 	    //CursorArray.moveToFirst();
 		//for (int i=0; i < CursorArray.getCount(); i++){

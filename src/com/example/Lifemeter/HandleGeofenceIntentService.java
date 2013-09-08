@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.IntentService;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
 import com.google.android.gms.location.Geofence;
@@ -57,6 +58,15 @@ public class HandleGeofenceIntentService extends IntentService {
 
             //Perform operations on the triggered Geofence;
             for (int i = 0; i < triggerList.size(); i++) {
+                String value = triggerList.get(i).getRequestId();
+
+                if(transitionType == Geofence.GEOFENCE_TRANSITION_ENTER) {
+                    SharedPreferences settings = getSharedPreferences("SETTINGS", 0);
+                    SharedPreferences.Editor editor = settings.edit();
+                    editor.putString("Current Geofence", value);
+                    editor.commit();
+                }
+
                 if (triggerList.get(i).getRequestId().equals("test")) {
                     if(transitionType == Geofence.GEOFENCE_TRANSITION_ENTER) {
 
