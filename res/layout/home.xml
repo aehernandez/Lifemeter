@@ -34,7 +34,7 @@
               android:layout_height="wrap_content"
               android:textStyle="bold"
               android:textSize="37dp"
-              android:text="Shopping"
+              android:text="Loading"
               />
           <TextView 
               android:id="@+id/time_elapsed"
