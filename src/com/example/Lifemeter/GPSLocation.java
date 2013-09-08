@@ -1,202 +1,206 @@
 package com.example.Lifemeter;
 
 import android.app.Activity;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.PendingIntent;
+import android.app.AlertDialog;
+import android.app.Service;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.os.IBinder;
+import android.provider.Settings;
 import android.util.Log;
-import android.widget.Toast;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesClient;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.location.*;
 
-import java.util.ArrayList;
-import java.util.List;
+public class GPSLocation extends Service implements LocationListener {
 
-/**
- * Created with IntelliJ IDEA.
- * User: Alain
- * Date: 9/6/13
- * Time: 9:34 PM
- * To change this template use File | Settings | File Templates.
- */
-public class GPSLocation extends FragmentActivity implements
-        GooglePlayServicesClient.ConnectionCallbacks,
-        GooglePlayServicesClient.OnConnectionFailedListener,
-        LocationListener,
-        LocationClient.OnAddGeofencesResultListener {
+    private Context mContext;
+    boolean isGPSEnabled = false;
+    boolean isNetworkEnabled = false;
+    boolean canGetLocation = false;
 
-    private final static int CONNECTION_FAILURE_RES_REQ = 9000;
-    private final static long UPDATE_INTERVAL = 60000;
-    private final static long DEFAULT_RADIUS = 20;
+    Location location;
+    double latitude;
+    double longitude;
+    double altitude;
+    float accuracy;
 
-    private LocationClient mLocationClient;
-    private LocationRequest mLocationRequest;
-    private Location lastLocation;
-    private String lastGeofence;
+    private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 5; // 5 meters
+    private static final long MIN_TIME_BTWN_UPDATES = 60000; //
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected LocationManager locationManager;
 
-        //Create the location client
-        mLocationClient = new LocationClient(this, this, this);
-
-        //Defines the interval
-        mLocationRequest.create();
-        mLocationRequest.setInterval(UPDATE_INTERVAL);
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        lastLocation = mLocationClient.getLastLocation();
+    public GPSLocation(Context context) {
+        this.mContext = context;
+        getLocation();
     }
 
-    public String getLastGeofence() {
-        return lastGeofence;
+    public GPSLocation() {
+        super();
     }
 
-    public void setLastGeofence(String id) {
-        this.lastGeofence = id;
+    public Location getLocation() {
+        try {
+            locationManager = (LocationManager) mContext
+                    .getSystemService(LOCATION_SERVICE);
+            isGPSEnabled = locationManager
+                    .isProviderEnabled(LocationManager.GPS_PROVIDER);
+            isNetworkEnabled = locationManager
+                    .isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+            if (!isGPSEnabled && !isNetworkEnabled) {
+                // No Network Provider is being given, Network Provider is not enabled
+                showSettingsAlert();
+            }   else {
+                this.canGetLocation = true;
+                if (isNetworkEnabled) {
+                    locationManager.requestLocationUpdates(
+                            LocationManager.NETWORK_PROVIDER,
+                            MIN_TIME_BTWN_UPDATES,
+                            MIN_DISTANCE_CHANGE_FOR_UPDATES, this
+                    );
+                    Log.d("Network","Network");
+                    if (locationManager != null) {
+                        location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                        if (location != null) {
+                            latitude = location.getLatitude();
+                            longitude = location.getLongitude();
+                            altitude = location.getAltitude();
+                            accuracy = location.getAccuracy();
+                        }
+                    }
+                }
+
+                if(isGPSEnabled) {
+                    if (location == null) {
+                        locationManager.requestLocationUpdates(
+                                LocationManager.GPS_PROVIDER,
+                                MIN_TIME_BTWN_UPDATES,
+                                MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+                        Log.d("GPS Enabled", "GPS Enabled");
+                        if (locationManager != null) {
+                            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+                            if (location != null) {
+                                latitude = location.getLatitude();
+                                longitude = location.getLongitude();
+                                altitude = location.getAltitude();
+                                accuracy = location.getAccuracy();
+
+
+                            }
+                        }
+
+                    }
+                }
+            }
+
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return location;
+    }
+
+    /**
+     * Function to get latitude
+     * */
+    public double getLatitude(){
+        if(location != null){
+            latitude = location.getLatitude();
+        }
+
+        // return latitude
+        return latitude;
+    }
+
+    /**
+     * Function to get longitude
+     * */
+    public double getLongitude(){
+        if(location != null){
+            longitude = location.getLongitude();
+        }
+
+        // return longitude
+        return longitude;
+    }
+
+    public double getAltitude() {
+        if(location != null){
+            longitude = location.getAltitude();
+        }
+
+        // return longitude
+        return longitude;
+    }
+
+    public double getAccuracy() {
+        return location.getAccuracy();
+    }
+
+    public boolean canGetLocation() {
+        return this.canGetLocation;
+    }
+
+    public void showSettingsAlert() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(mContext);
+        alertDialog.setTitle("GPS Not Enabled");
+        alertDialog.setMessage("To use this application please enable GPS in settings.");
+        alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent (Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                mContext.startActivity(intent);
+            }
+        });
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+
+        alertDialog.show();
+    }
+
+    public void stopUsingGPS() {
+        if (locationManager != null) {
+            locationManager.removeUpdates(GPSLocation.this);
+        }
     }
 
     @Override
     public void onLocationChanged(Location location) {
-        lastLocation = location;
-    }
+        getLocation();
+        this.latitude = location.getLatitude();
+        this.longitude = location.getLongitude();
+        this.altitude = location.getAltitude();
+        this.accuracy = location.getAccuracy();
 
-    public Location getLastLocation() {
-        return lastLocation;
     }
 
     @Override
-    public void onAddGeofencesResult(int status, String[] geofenceRequestIds) {
-        if(LocationStatusCodes.SUCCESS == status) {
-            Toast.makeText(this, "Successfully added Geofence", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Failed to add Geofence", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    public void initializeGeofenceListeners() {
-
-    }
-
-    public void createGeofence(Location location, String uniqueID) {
-
-        Geofence g = new Geofence.Builder().setCircularRegion(location.getLatitude()
-                                                             ,location.getLongitude()
-                                                             ,DEFAULT_RADIUS)
-                                   .setRequestId(uniqueID)
-                                   .setExpirationDuration(Geofence.NEVER_EXPIRE)
-                                   .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER
-                                           | Geofence.GEOFENCE_TRANSITION_EXIT).build();
-        ArrayList<Geofence> gl = new ArrayList<Geofence>();
-
-        gl.add(g);
-        mLocationClient.addGeofences(gl , getTransitionPendingIntent(), this);
-
-    }
-
-
-
-    private PendingIntent getTransitionPendingIntent() {
-        // Create an explicit Intent
-        Intent intent = new Intent(this,
-                HandleGeofenceIntentService.class);
-        /*
-         * Return the PendingIntent
-         */
-        return PendingIntent.getService(
-                this,
-                0,
-                intent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
-    }
-
-    @Override
-    public void onConnected(Bundle bundle) {
-
-        mLocationClient.requestLocationUpdates(mLocationRequest, this);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();    //To change body of overridden methods use File | Settings | File Templates.
-        mLocationClient.connect();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();    //To change body of overridden methods use File | Settings | File Templates.
-        mLocationClient.disconnect();
-    }
-
-    //Returns the activity result when the activity is asked.
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case CONNECTION_FAILURE_RES_REQ :
-                switch (resultCode) {
-                    case Activity.RESULT_OK :
-                        break;
-                }
-        }
-    }
-
-    // Used to check the connection to Google Play Services.
-    private boolean servicesConnection() {
-        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-        if (ConnectionResult.SUCCESS == resultCode){
-            Log.d("Location Updates", "Google Play Services is available.");
-            return true;
-        } else {
-
-            GooglePlayServicesUtil.getErrorDialog(resultCode, this, 0).show();
-            return false;
-        }
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-        /*
-         * Google Play services can resolve some errors it detects.
-         * If the error has a resolution, try sending an Intent to
-         * start a Google Play services activity that can resolve
-         * error.
-         */
-        if (connectionResult.hasResolution()) {
-            try {
-                // Start an Activity that tries to resolve the error
-                connectionResult.startResolutionForResult(
-                        this,
-                        CONNECTION_FAILURE_RES_REQ);
-                /*
-                 * Thrown if Google Play services canceled the original
-                 * PendingIntent
-                 */
-            } catch (IntentSender.SendIntentException e) {
-                // Log the error
-                e.printStackTrace();
-            }
-        } else {
-            /*
-             * If no resolution is available, display a dialog to the
-             * user with the error.
-             */
-            GooglePlayServicesUtil.getErrorDialog(connectionResult.getErrorCode(),this,0).show();
-        }
-    }
-
-    @Override
-    public void onDisconnected() {
+    public void onStatusChanged(String s, int i, Bundle bundle) {
         //To change body of implemented methods use File | Settings | File Templates.
     }
 
+    @Override
+    public void onProviderEnabled(String s) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
 
+    @Override
+    public void onProviderDisabled(String s) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 }
-
-
-

@@ -3,6 +3,7 @@ package com.example.Lifemeter;
 import android.app.IntentService;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.LocationClient;
 
@@ -36,24 +37,25 @@ public class HandleGeofenceIntentService extends IntentService {
 
                 //Updates the last known Geofence to the main activity - Lifemeter
                 List<Geofence> triggerList = LocationClient.getTriggeringGeofences(intent);
-
                 String lastGeofence = triggerList.get(triggerList.size() -1).getRequestId();
-
                 Intent broadcastGeofence = new Intent();
                 broadcastGeofence.setAction(Lifemeter.GeofenceBroadcast.ACTION_REP);
                 broadcastGeofence.addCategory(Intent.CATEGORY_DEFAULT);
                 broadcastGeofence.putExtra(UPDATE_LASTGEOFENCE, lastGeofence);
                 sendBroadcast(broadcastGeofence);
-
             }
+
 
             //Get which Geofences triggered
             List<Geofence> triggerList = LocationClient.getTriggeringGeofences(intent);
-            ArrayList<String> triggerIds = new ArrayList<String>();
 
             //Perform operations on the triggered Geofence;
             for (Geofence geofence : triggerList) {
-                triggerIds.add(geofence.getRequestId());
+                if(geofence.getRequestId() == "test") {
+                    if(transitionType == Geofence.GEOFENCE_TRANSITION_ENTER)
+                        Toast.makeText(getApplicationContext(), "You ENTERED the test area.", Toast.LENGTH_LONG);
+                    else Toast.makeText(getApplicationContext(), "You LEFT the test area.", Toast.LENGTH_LONG);
+                }
             }
 
 

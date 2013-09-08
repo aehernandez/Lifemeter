@@ -8,23 +8,44 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
+import android.content.*;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.location.Location;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesClient;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.location.LocationRequest;
 
-public class Lifemeter extends Activity {
+
+public class Lifemeter extends Activity implements
+        GooglePlayServicesClient.ConnectionCallbacks,
+        GooglePlayServicesClient.OnConnectionFailedListener {
 
     private SQLiteDatabase database;
     private DbList sampledb;
+
     //Location classes
+    private LocationClient mLocationClient;
+    private LocationRequest mLocationRequest;
     public GPSLocation gps;
     private GeofenceBroadcast geofenceReceiver;
+    private Location lastLocation;
+    private String lastGeofenceId;
+
+    private final static long UPDATE_INTERVAL = 60000;
+    private final static long DEFAULT_RADIUS = 20;
+    private final static int CONNECTION_FAILURE_RES_REQ = 9000;
+
 
     private TextView currentActivity;
     private TextView timeElapsed;
@@ -41,6 +62,8 @@ public class Lifemeter extends Activity {
     private TextView [] topActivities = new TextView[5];
     private TextView [] topTimes = new TextView[5];
 
+
+
     /**
      * Called when the activity is first created.
      */
@@ -49,14 +72,33 @@ public class Lifemeter extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        //Handles all the GPS pings and Geofencing capabilities
-        gps = new GPSLocation();
+        mLocationClient = new LocationClient(this, this, this);
+        mLocationRequest.setInterval(UPDATE_INTERVAL);
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        lastLocation = mLocationClient.getLastLocation();
+
+        final GeofenceManager mGeofenceManager = new GeofenceManager(this, mLocationClient);
+
 
         //Uses BroadcastReceiver in order to update the last entered Geofence for use in the frontend
         IntentFilter locationFilter = new IntentFilter(GeofenceBroadcast.ACTION_REP);
         locationFilter.addCategory(Intent.CATEGORY_DEFAULT);
         geofenceReceiver = new GeofenceBroadcast();
         registerReceiver(geofenceReceiver,locationFilter);
+
+        Button testButton = new Button(this);
+        testButton.setText("Add Geofence");
+        testButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mGeofenceManager.createGeofence(mLocationClient.getLastLocation(), "test", DEFAULT_RADIUS);
+            }
+        });
+
+        LinearLayout ll = (LinearLayout) findViewById(R.layout.main);
+        LinearLayout.LayoutParams lp = new  LinearLayout.LayoutParams( LinearLayout.LayoutParams.MATCH_PARENT,  LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        ll.addView(testButton, lp);
 
         ActionBar bar = getActionBar();
         bar.setDisplayShowHomeEnabled(false);
@@ -302,6 +344,72 @@ public class Lifemeter extends Activity {
         return lineData;
     }
 
+    @Override
+    public void onConnected(Bundle bundle) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    //Returns the activity result when the activity is asked.
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case CONNECTION_FAILURE_RES_REQ :
+                switch (resultCode) {
+                    case Activity.RESULT_OK :
+                        break;
+                }
+        }
+    }
+
+    // Used to check the connection to Google Play Services.
+    private boolean servicesConnection() {
+        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+        if (ConnectionResult.SUCCESS == resultCode){
+            Log.d("Location Updates", "Google Play Services is available.");
+            return true;
+        } else {
+
+            GooglePlayServicesUtil.getErrorDialog(resultCode, this, 0).show();
+            return false;
+        }
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        /*
+         * Google Play services can resolve some errors it detects.
+         * If the error has a resolution, try sending an Intent to
+         * start a Google Play services activity that can resolve
+         * error.
+         */
+        if (connectionResult.hasResolution()) {
+            try {
+                // Start an Activity that tries to resolve the error
+                connectionResult.startResolutionForResult(
+                        this,
+                        CONNECTION_FAILURE_RES_REQ);
+                /*
+                 * Thrown if Google Play services canceled the original
+                 * PendingIntent
+                 */
+            } catch (IntentSender.SendIntentException e) {
+                // Log the error
+                e.printStackTrace();
+            }
+        } else {
+            /*
+             * If no resolution is available, display a dialog to the
+             * user with the error.
+             */
+            GooglePlayServicesUtil.getErrorDialog(connectionResult.getErrorCode(), this, 0).show();
+        }
+    }
+
+    @Override
+    public void onDisconnected() {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
+
     //Used to broadcast information about the last known Geofence, could be expanded
     public class GeofenceBroadcast extends BroadcastReceiver {
         public static final String ACTION_REP = "com.mamlambo.intent.action.MESSAGE_PROCESSED";
@@ -309,7 +417,7 @@ public class Lifemeter extends Activity {
         @Override
         public void onReceive(Context context, Intent intent) {
             String lastGeo = intent.getStringExtra(HandleGeofenceIntentService.UPDATE_LASTGEOFENCE);
-            gps.setLastGeofence(lastGeo);
+            lastGeofenceId = lastGeo;
 
         }
 
