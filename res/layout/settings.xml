@@ -4,10 +4,51 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:text="Tupac 4" />
+
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content"
+                  android:layout_height="wrap_content" android:layout_gravity="left|center_vertical"
+                  android:id="@+id/linearLayout">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:layout_gravity="left|center_vertical" android:text="Home" android:paddingLeft="20dp"
+                  android:paddingTop="10dp" android:paddingBottom="10dp" android:paddingRight="30dp"
+                  android:id="@+id/textView2"/>
+        <EditText android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Lang"
+                  android:id="@+id/editText3" android:layout_gravity="center" android:singleLine="false"/>
+        <EditText android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Long"
+                  android:id="@+id/editText2" android:layout_gravity="center_horizontal|bottom"
+                  android:layout_weight="0.16"/>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content"
+                  android:layout_height="wrap_content" android:layout_gravity="left|center_vertical"
+                  android:id="@+id/linearLayout1">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:layout_gravity="left|center_vertical" android:text="Work" android:paddingLeft="20dp"
+                  android:paddingTop="10dp" android:paddingBottom="10dp" android:paddingRight="36dp"
+                  android:id="@+id/textView"/>
+        <EditText android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Lang"
+                  android:id="@+id/editText" android:layout_gravity="center" android:singleLine="false"/>
+        <EditText android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Long"
+                  android:id="@+id/editText1" android:layout_gravity="center_horizontal|bottom"
+                  android:layout_weight="0.16"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_gravity="left|center_vertical">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:layout_gravity="left|center_vertical" android:text="Do Not Track" android:paddingLeft="20dp"
+                  android:paddingTop="10dp" android:paddingBottom="10dp" android:paddingRight="101dp"
+                  android:id="@+id/textView1"/>
+        <ToggleButton
+                android:layout_width="105dp"
+                android:layout_height="wrap_content"
+                android:text="New ToggleButton"
+                android:id="@+id/toggleButton" android:layout_gravity="center"/>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" android:layout_gravity="center_horizontal|bottom">
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
