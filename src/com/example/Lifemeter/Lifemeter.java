@@ -220,7 +220,7 @@ public class Lifemeter extends Activity {
        // return FakeArray;
     	String[] activityArray = new String[10];
     	
-    	activityArray = data.Places(); 
+    	activityArray = data.PlacesTracked(); 
     	
     	return activityArray;
     }
