@@ -299,7 +299,7 @@ public class Lifemeter extends Activity {
 		//}
         String[] activityArray = new String[10];
     	
-    	activityArray = data.Places(); 
+    	activityArray = Data.Places();
     	
     	return activityArray;
 	}
@@ -320,7 +320,7 @@ public class Lifemeter extends Activity {
 	
     	double[][] timespent = new double[10][400];
     	
-    	timespent = data.DataRandomizer(); 
+    	timespent = Data.DataRandomizer();
     	double[] timeArray = new double[10];
     	timeArray[0] = timespent[0][0];
     	timeArray[1] = timespent[0][1];
@@ -417,7 +417,7 @@ public class Lifemeter extends Activity {
 		for (int x = (lineData.length-1); x>=0; x--) {
 			lineData[x] = lineHelper(activity, today-x);
 		}
-        } else if (timePeriod == 2) {
+        } else {
         	lineData = new double[12];
         	double sum;
         	for (int x = 11; x>=0; x--) {

@@ -29,7 +29,7 @@ public class Data {
     	categories[6] = "Home";
     	categories[7] = "Studying";
     	categories[8] = "Work";
-    	categories [9] = "Home";
+
 		return categories;
 	}
 	
