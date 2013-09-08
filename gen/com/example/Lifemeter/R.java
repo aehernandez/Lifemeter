@@ -16,6 +16,9 @@ public final class R {
         public static final int abc_slide_out_bottom=0x7f040004;
         public static final int abc_slide_out_top=0x7f040005;
     }
+    public static final class array {
+        public static final int time_interval=0x7f0c0000;
+    }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
@@ -1141,17 +1144,18 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f060032;
         public static final int action_mode_bar_stub=0x7f060031;
         public static final int action_mode_close_button=0x7f060025;
-        public static final int activity1=0x7f06004a;
-        public static final int activity2=0x7f06004e;
-        public static final int activity3=0x7f060052;
-        public static final int activity4=0x7f060056;
-        public static final int activity5=0x7f06005a;
+        public static final int activity1=0x7f06004c;
+        public static final int activity2=0x7f060050;
+        public static final int activity3=0x7f060054;
+        public static final int activity4=0x7f060058;
+        public static final int activity5=0x7f06005c;
         public static final int activity_chooser_view_content=0x7f060026;
         public static final int always=0x7f06000f;
+        public static final int analytics_background=0x7f060045;
         public static final int beginning=0x7f060014;
         public static final int checkbox=0x7f06002e;
         public static final int collapseActionView=0x7f060011;
-        public static final int current_activity=0x7f060046;
+        public static final int current_activity=0x7f060048;
         public static final int default_activity_button=0x7f060029;
         public static final int dialog=0x7f060012;
         public static final int disableHome=0x7f06000c;
@@ -1160,16 +1164,16 @@ containing a value of this type.
         public static final int end=0x7f060016;
         public static final int expand_activities_button=0x7f060027;
         public static final int expanded_menu=0x7f06002d;
-        public static final int fifth_progress_bar=0x7f06005c;
-        public static final int fifth_texts=0x7f060059;
-        public static final int first_progress_bar=0x7f06004c;
-        public static final int first_texts=0x7f060049;
-        public static final int fourth_progress_bar=0x7f060058;
-        public static final int fourth_texts=0x7f060055;
-        public static final int fragment_container=0x7f06005d;
+        public static final int fifth_progress_bar=0x7f06005e;
+        public static final int fifth_texts=0x7f06005b;
+        public static final int first_progress_bar=0x7f06004e;
+        public static final int first_texts=0x7f06004b;
+        public static final int fourth_progress_bar=0x7f06005a;
+        public static final int fourth_texts=0x7f060057;
+        public static final int fragment_container=0x7f06005f;
         public static final int home=0x7f060017;
         public static final int homeAsUp=0x7f060009;
-        public static final int home_background=0x7f060045;
+        public static final int home_background=0x7f060047;
         public static final int hybrid=0x7f060004;
         public static final int icon=0x7f06002b;
         public static final int ifRoom=0x7f06000e;
@@ -1197,8 +1201,8 @@ containing a value of this type.
         public static final int search_plate=0x7f06003f;
         public static final int search_src_text=0x7f060040;
         public static final int search_voice_btn=0x7f060044;
-        public static final int second_progress_bar=0x7f060050;
-        public static final int second_texts=0x7f06004d;
+        public static final int second_progress_bar=0x7f060052;
+        public static final int second_texts=0x7f06004f;
         public static final int shortcut=0x7f06002f;
         public static final int showCustom=0x7f06000b;
         public static final int showHome=0x7f060008;
@@ -1207,15 +1211,16 @@ containing a value of this type.
         public static final int submit_area=0x7f060042;
         public static final int tabMode=0x7f060006;
         public static final int terrain=0x7f060003;
-        public static final int third_progress_bar=0x7f060054;
-        public static final int third_texts=0x7f060051;
-        public static final int this_week=0x7f060048;
-        public static final int time1=0x7f06004b;
-        public static final int time2=0x7f06004f;
-        public static final int time3=0x7f060053;
-        public static final int time4=0x7f060057;
-        public static final int time5=0x7f06005b;
-        public static final int time_elapsed=0x7f060047;
+        public static final int third_progress_bar=0x7f060056;
+        public static final int third_texts=0x7f060053;
+        public static final int this_week=0x7f06004a;
+        public static final int time1=0x7f06004d;
+        public static final int time2=0x7f060051;
+        public static final int time3=0x7f060055;
+        public static final int time4=0x7f060059;
+        public static final int time5=0x7f06005d;
+        public static final int time_elapsed=0x7f060049;
+        public static final int time_interval=0x7f060046;
         public static final int title=0x7f06002c;
         public static final int title_container=0x7f060033;
         public static final int top_action_bar=0x7f060021;

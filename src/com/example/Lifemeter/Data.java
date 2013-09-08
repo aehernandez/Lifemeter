@@ -2,7 +2,7 @@ package com.example.Lifemeter;
 
 import java.lang.*; 
 
-public class data {
+public class Data {
 	
 	public static String[] Places(){
 
