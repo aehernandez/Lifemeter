@@ -329,9 +329,9 @@ public class Lifemeter extends Activity {
     	timeArray[4] = timespent[0][4];
     	timeArray[5] = timespent[0][5];
     	timeArray[6] = timespent[0][6];
-    	timeArray[7] = timespent[0][7];;
-    	timeArray[8] = timespent[0][8];;
-    	timeArray[9] = timespent[0][9];;
+    	timeArray[7] = timespent[0][7];
+    	timeArray[8] = timespent[0][8];
+    	timeArray[9] = timespent[0][9];
     	return timeArray;
         
     }
@@ -348,8 +348,7 @@ public class Lifemeter extends Activity {
             totals[x] = 0.00;
         }
 
-        int amount = categories.length;
-        for (int x=0; x<amount; x++) {
+        for (int x=0; x<categories.length; x++) {
             for (int y=0; y<activityList.length; y++) {
                 if (activityList[y].equals(categories[x])) {
                     totals[x] = totals[x] + timeList[y];
