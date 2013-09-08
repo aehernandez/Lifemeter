@@ -4,6 +4,19 @@ import java.lang.*;
 
 public class data {
 	
+	
+	public static String[] PlacesTracked(){
+		String[] categories = new String[10];
+		categories[0] = "Home";
+		categories[1] = "Work";
+		categories[2] = "Shopping";
+		categories[3] = "Eating";
+		categories[4] = "Transit";
+		categories[5] = "Studying";
+		
+		return categories; 
+	}
+	
 	public static String[] Places(){
 
 		String[] categories = new String[10];
