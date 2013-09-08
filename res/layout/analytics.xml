@@ -12,8 +12,8 @@
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:orientation="vertical"
-         android:paddingTop="45dp"
-         android:paddingLeft="265dp">
+         android:paddingTop="140px"
+         android:paddingLeft="800px">
          
          <TextView 
             android:layout_width="wrap_content"
@@ -23,37 +23,37 @@
          <TextView 
             android:layout_width="wrap_content"
          	android:layout_height="wrap_content"
-         	android:paddingTop="6dp"
+         	android:paddingTop="32px"
          	android:text="Work"
          	/>
          <TextView 
             android:layout_width="wrap_content"
          	android:layout_height="wrap_content"
-         	android:paddingTop="6dp"
+         	android:paddingTop="32px"
          	android:text="Gym"
          	/>
          <TextView 
             android:layout_width="wrap_content"
          	android:layout_height="wrap_content"
-         	android:paddingTop="6dp"
+         	android:paddingTop="32px"
          	android:text="Shopping"
          	/>
          <TextView 
             android:layout_width="wrap_content"
          	android:layout_height="wrap_content"
-         	android:paddingTop="6dp"
+         	android:paddingTop="32px"
          	android:text="Eating"
          	/>
          <TextView 
             android:layout_width="wrap_content"
          	android:layout_height="wrap_content"
-         	android:paddingTop="6dp"
+         	android:paddingTop="32px"
          	android:text="Transit"
          	/>
          <TextView 
             android:layout_width="wrap_content"
          	android:layout_height="wrap_content"
-         	android:paddingTop="6dp"
+         	android:paddingTop="32px"
          	android:text="Studying"
          	/>
      </LinearLayout>

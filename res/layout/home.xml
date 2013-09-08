@@ -40,7 +40,11 @@
               android:layout_height="wrap_content"
               android:textStyle="bold"
               android:textSize="37dp"
+<<<<<<< HEAD
               android:text="Gym"
+=======
+              android:text="Loading"
+>>>>>>> a0936e5272a2a434f90e5ec2cd2495f9d22ebc27
               />
           <TextView 
               android:id="@+id/time_elapsed"
@@ -88,7 +92,7 @@
                android:id="@+id/activity1"
                android:layout_height="wrap_content"
                android:layout_width="wrap_content"
-               android:text="Shopping"
+               android:text="Loading"
                android:textStyle="bold"
                android:textSize="18sp"
                android:layout_alignParentLeft="true"
@@ -278,7 +282,7 @@
                style="?android:attr/progressBarStyleHorizontal"
                />
              
-          </LinearLayout>             
+          </LinearLayout>
      </RelativeLayout>
 </FrameLayout>
 

@@ -2,9 +2,12 @@ package com.example.Lifemeter;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
-import android.app.ActionBar;
+import android.app.*;
 import android.app.ActionBar.Tab;
+<<<<<<< HEAD
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -18,16 +21,32 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+=======
+import android.content.*;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.location.Location;
+import android.os.*;
+import android.util.Log;
+import android.view.View;
+import android.widget.*;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+>>>>>>> a0936e5272a2a434f90e5ec2cd2495f9d22ebc27
 
 public class Lifemeter extends Activity {
 
     public static SQLiteDatabase database;
     public DbList sampledb;
     public DbClass GeoFenceDb;
-    public static DbActivities ActivityDb; 
+    public static DbActivities ActivityDb;
+
     //Location classes
     public GPSLocation gps;
     private GeofenceBroadcast geofenceReceiver;
+    private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
+    private GeoService.LocalBinder mGeoBinder;
+    private ServiceConnection mConnection;
 
     private static TextView currentActivity;
     private static TextView timeElapsed;
@@ -45,6 +64,15 @@ public class Lifemeter extends Activity {
     
     private static TextView [] topActivities = new TextView[5];
     private static TextView [] topTimes = new TextView[5];
+    private CountDownTimer count;
+    private String currentGeofenceId;
+    private String previousGeofenceId;
+    private int currentTime = 0;
+    private int currentSeconds = 0;
+    private int currentMinutes = 0;
+    private Handler mHandler = new Handler();
+    private Runnable read;
+
 
     /**
      * Called when the activity is first created.
@@ -63,11 +91,15 @@ public class Lifemeter extends Activity {
         //Handles all the GPS pings and Geofencing capabilities
         //gps = new GPSLocation();
 
+        if (!servicesConnected()) {
+            Toast.makeText(this, "Please connect to Google Play Services", Toast.LENGTH_LONG);
+        }
+
         //Uses BroadcastReceiver in order to update the last entered Geofence for use in the frontend
         //IntentFilter locationFilter = new IntentFilter(GeofenceBroadcast.ACTION_REP);
         //locationFilter.addCategory(Intent.CATEGORY_DEFAULT);
         //geofenceReceiver = new GeofenceBroadcast();
-        //registerReceiver(geofenceReceiver,locationFilter);
+        //
 
         ActionBar bar = getActionBar();
         bar.setDisplayShowHomeEnabled(false);
@@ -100,7 +132,29 @@ public class Lifemeter extends Activity {
         fragmentTransaction.add(R.id.fragment_container, settingsFragment);
         tabD.setTabListener(new CustomTabListener(settingsFragment));
         bar.addTab(tabD);
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();    //To change body of overridden methods use File | Settings | File Templates.
+
+        //Binds the GeoService to be able to create and keep track of classes
+        Intent mIntent = new Intent(this, GeoService.class);
+
+       mConnection = new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                 mGeoBinder = (GeoService.LocalBinder) service;
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+
+            }
+        };
         
+<<<<<<< HEAD
         count=new CountDownTimer(1000,100) {
 			@Override
 			public void onFinish() {
@@ -111,6 +165,74 @@ public class Lifemeter extends Activity {
 			}
         }.start();
         
+=======
+        bindService(mIntent, mConnection, BIND_AUTO_CREATE);
+        startService(mIntent);
+
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();    //To change body of overridden methods use File | Settings | File Templates.
+        //Unbinds the GeoService for power management reasons
+        unbindService(mConnection);
+    }
+
+    // Define a DialogFragment that displays the error dialog
+    public static class ErrorDialogFragment extends DialogFragment {
+        // Global field to contain the error dialog
+        private Dialog mDialog;
+        // Default constructor. Sets the dialog field to null
+        public ErrorDialogFragment() {
+            super();
+            mDialog = null;
+        }
+        // Set the dialog to display
+        public void setDialog(Dialog dialog) {
+            mDialog = dialog;
+        }
+        // Return a Dialog to the DialogFragment.
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            return mDialog;
+        }
+    }
+
+    private boolean servicesConnected() {
+        // Check that Google Play services is available
+        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+        // If Google Play services is available
+        if (ConnectionResult.SUCCESS == resultCode) {
+            // In debug mode, log the status
+            Log.d("Location Updates",
+                    "Google Play services is available.");
+            // Continue
+            return true;
+            // Google Play services was not available for some reason
+        } else {
+            // Get the error code
+            // Get the error dialog from Google Play services
+            Dialog errorDialog = GooglePlayServicesUtil.getErrorDialog(
+                    resultCode,
+                    this,
+                    CONNECTION_FAILURE_RESOLUTION_REQUEST);
+
+            // If Google Play services can provide an error dialog
+            if (errorDialog != null) {
+                // Create a new DialogFragment for the error dialog
+                ErrorDialogFragment errorFragment =
+                        new ErrorDialogFragment();
+                // Set the dialog in the DialogFragment
+                errorFragment.setDialog(errorDialog);
+                // Show the error dialog in the DialogFragment
+                errorFragment.show(getFragmentManager(),
+                        "Location Updates");
+            }
+        }
+
+        return false;
+>>>>>>> a0936e5272a2a434f90e5ec2cd2495f9d22ebc27
     }
 
     public void read() {
@@ -118,13 +240,29 @@ public class Lifemeter extends Activity {
     }
     
     public void onResume() {
+
+
         super.onResume();
         currentActivity = (TextView) homeFragment.getView().findViewById(R.id.current_activity);
         timeElapsed = (TextView) homeFragment.getView().findViewById(R.id.time_elapsed);
         updateHome();
+
+//        Button testButton = (Button) homeFragment.getView().findViewById(R.id.button);
+//        testButton.setText("Add Geofence");
+//        testButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//            Location loc = mGeoBinder.getLocation();
+//            mGeoBinder.createGeofence(loc,20.0f,"test");
+//            Toast.makeText(context, "Created Geofence at " + loc.getLatitude() + " , " + loc.getLongitude(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
     }
 
     public static void updateHome() {
+
+
         String[] activities = getActivitiesTracked();
         double[] weeklyTotals = new double[activities.length];
 
@@ -150,6 +288,7 @@ public class Lifemeter extends Activity {
                 }
             }
         }
+
 
         firstBar=(ProgressBar) homeFragment.getView().findViewById(R.id.first_progress_bar);
         firstBar.setMax((int)weeklyTotals[0]);
@@ -179,8 +318,10 @@ public class Lifemeter extends Activity {
 
             id = "time"+(j+1);
             resID= context.getResources().getIdentifier(id,"id","com.example.Lifemeter");
+
             topTimes[j]=(TextView)homeFragment.getView().findViewById(resID);
             topTimes[j].setText(hourForm.format(weeklyTotals[j]/60) + " hrs");
+
         }
 
     }
@@ -189,19 +330,19 @@ public class Lifemeter extends Activity {
      * BAR GRAPH WIDGET
      * How to get a list of activities and cumulative times:
      * Use calculateTotalsPeriod(earlier day, later day)
-     * Earlier day and later day are used depending on the time interval.
+     * Earlier day and later day are used depending on the elapsedTime interval.
      * The list of activities corresponds in order using getActivityList(use the later day)
      *
      * PIE CHART WIDGET
      * How to get data for pie chart:
      * Use calculatePieChart(earlier day, later day)
-     * Earlier day and later day are used depending on the time interval.
+     * Earlier day and later day are used depending on the elapsedTime interval.
      * The list of activities corresponds in order using getActivityList(use the later day)
      *
      * LINE GRAPH WIDGET
      * How to get data for line graph:
      * Use calculateLineGraph(activity, earlier day, later day)
-     * Earlier day and later day are used depending on the time interval.
+     * Earlier day and later day are used depending on the elapsedTime interval.
      * The list of activities corresponds in order using getActivityList(use the later day)
      */
 
@@ -234,8 +375,14 @@ public class Lifemeter extends Activity {
         //}
        // return FakeArray;
     	String[] activityArray = new String[10];
+<<<<<<< HEAD
     	activityArray = Data.PlacesTracked(); 
     	
+=======
+    	
+    	activityArray = Data.PlacesTracked(); 
+
+>>>>>>> a0936e5272a2a434f90e5ec2cd2495f9d22ebc27
     	return activityArray;
     }
 
@@ -313,7 +460,11 @@ public class Lifemeter extends Activity {
 		//}
         String[] activityArray = new String[10];
     	
+<<<<<<< HEAD
     	activityArray = Data.Places(); 
+=======
+    	activityArray = Data.Places();
+>>>>>>> a0936e5272a2a434f90e5ec2cd2495f9d22ebc27
     	
     	return activityArray;
 	}
@@ -324,7 +475,7 @@ public class Lifemeter extends Activity {
         //double[] fakeArray = new double[1000000];
 	    //Cursor CursorArray;
 	    //String Activity = "activity";
-	    //CursorArray = database.rawQuery("SELECT time FROM" +ActivityDb.TableName+ "WHERE day="+day ,null);
+	    //CursorArray = database.rawQuery("SELECT elapsedTime FROM" +ActivityDb.TableName+ "WHERE day="+day ,null);
 	    
 	    //CursorArray.moveToFirst();
 		//for (int i=0; i < CursorArray.getCount(); i++){
@@ -334,7 +485,11 @@ public class Lifemeter extends Activity {
 	
     	double[][] timespent = new double[10][400];
     	
+<<<<<<< HEAD
     	timespent = Data.DataRandomizer(); 
+=======
+    	timespent = Data.DataRandomizer();
+>>>>>>> a0936e5272a2a434f90e5ec2cd2495f9d22ebc27
     	double[] timeArray = new double[10];
     	timeArray[0] = timespent[0][0];
     	timeArray[1] = timespent[0][1];
@@ -343,9 +498,9 @@ public class Lifemeter extends Activity {
     	timeArray[4] = timespent[0][4];
     	timeArray[5] = timespent[0][5];
     	timeArray[6] = timespent[0][6];
-    	timeArray[7] = timespent[0][7];;
-    	timeArray[8] = timespent[0][8];;
-    	timeArray[9] = timespent[0][9];;
+    	timeArray[7] = timespent[0][7];
+    	timeArray[8] = timespent[0][8];
+    	timeArray[9] = timespent[0][9];
     	return timeArray;
         
     }
@@ -362,8 +517,7 @@ public class Lifemeter extends Activity {
             totals[x] = 0.00;
         }
 
-        int amount = categories.length;
-        for (int x=0; x<amount; x++) {
+        for (int x=0; x<categories.length; x++) {
             for (int y=0; y<activityList.length; y++) {
                 if (activityList[y].equals(categories[x])) {
                     totals[x] = totals[x] + timeList[y];
@@ -402,8 +556,13 @@ public class Lifemeter extends Activity {
 
         return percentages;
     }
+<<<<<<< HEAD
 
     public static double lineHelper(String activity, int day) {
+=======
+	
+    public double lineHelper(String activity, int day) {
+>>>>>>> a0936e5272a2a434f90e5ec2cd2495f9d22ebc27
     	double totalMinutes = 0.0;
     	double[] tempArray = getTimeList(day);
     	String[] tempName = getActivityList(day);
@@ -418,7 +577,11 @@ public class Lifemeter extends Activity {
     
     // Returns a list of minutes in chronological order for a specific activity and timeframe inclusive
     // 0 = week, 1 = month, 2 = year
+<<<<<<< HEAD
     public static double[] calculateLineGraph(String activity, int timePeriod) {
+=======
+    public double[] calculateLineGraph(String activity, int timePeriod) {
+>>>>>>> a0936e5272a2a434f90e5ec2cd2495f9d22ebc27
         double[] lineData;
         int today = whatToday();
         if (timePeriod == 0) {
@@ -441,7 +604,13 @@ public class Lifemeter extends Activity {
         		}
         		lineData[x] = sum;
         	}
+<<<<<<< HEAD
         }
+=======
+        	
+        }
+        
+>>>>>>> a0936e5272a2a434f90e5ec2cd2495f9d22ebc27
         return lineData;
     }
 
