@@ -3,31 +3,34 @@ package com.example.Lifemeter;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 
-import android.app.ActionBar;
+import android.app.*;
 import android.app.ActionBar.Tab;
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
+import android.content.*;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.location.Location;
+import android.os.Binder;
 import android.os.Bundle;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.os.IBinder;
+import android.util.Log;
+import android.view.View;
+import android.widget.*;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 
 public class Lifemeter extends Activity {
 
     public static SQLiteDatabase database;
     public DbList sampledb;
     public DbClass GeoFenceDb;
-    public static DbActivities ActivityDb; 
+    public static DbActivities ActivityDb;
+
     //Location classes
     public GPSLocation gps;
     private GeofenceBroadcast geofenceReceiver;
+    private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
+    private GeoService.LocalBinder mGeoBinder;
+    private ServiceConnection mConnection;
 
     private static TextView currentActivity;
     private static TextView timeElapsed;
@@ -44,6 +47,8 @@ public class Lifemeter extends Activity {
     
     private static TextView [] topActivities = new TextView[5];
     private static TextView [] topTimes = new TextView[5];
+
+
 
     /**
      * Called when the activity is first created.
@@ -62,11 +67,15 @@ public class Lifemeter extends Activity {
         //Handles all the GPS pings and Geofencing capabilities
         //gps = new GPSLocation();
 
+        if (!servicesConnected()) {
+            Toast.makeText(this, "Please connect to Google Play Services", Toast.LENGTH_LONG);
+        }
+
         //Uses BroadcastReceiver in order to update the last entered Geofence for use in the frontend
         //IntentFilter locationFilter = new IntentFilter(GeofenceBroadcast.ACTION_REP);
         //locationFilter.addCategory(Intent.CATEGORY_DEFAULT);
         //geofenceReceiver = new GeofenceBroadcast();
-        //registerReceiver(geofenceReceiver,locationFilter);
+        //
 
         ActionBar bar = getActionBar();
         bar.setDisplayShowHomeEnabled(false);
@@ -102,11 +111,108 @@ public class Lifemeter extends Activity {
         
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();    //To change body of overridden methods use File | Settings | File Templates.
+
+        //Binds the GeoService to be able to create and keep track of classes
+        Intent mIntent = new Intent(this, GeoService.class);
+
+       mConnection = new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                 mGeoBinder = (GeoService.LocalBinder) service;
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+
+            }
+        };
+        
+        bindService(mIntent, mConnection, BIND_AUTO_CREATE);
+        startService(mIntent);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();    //To change body of overridden methods use File | Settings | File Templates.
+        //Unbinds the GeoService for power management reasons
+        unbindService(mConnection);
+    }
+
+    // Define a DialogFragment that displays the error dialog
+    public static class ErrorDialogFragment extends DialogFragment {
+        // Global field to contain the error dialog
+        private Dialog mDialog;
+        // Default constructor. Sets the dialog field to null
+        public ErrorDialogFragment() {
+            super();
+            mDialog = null;
+        }
+        // Set the dialog to display
+        public void setDialog(Dialog dialog) {
+            mDialog = dialog;
+        }
+        // Return a Dialog to the DialogFragment.
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            return mDialog;
+        }
+    }
+
+    private boolean servicesConnected() {
+        // Check that Google Play services is available
+        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+        // If Google Play services is available
+        if (ConnectionResult.SUCCESS == resultCode) {
+            // In debug mode, log the status
+            Log.d("Location Updates",
+                    "Google Play services is available.");
+            // Continue
+            return true;
+            // Google Play services was not available for some reason
+        } else {
+            // Get the error code
+            // Get the error dialog from Google Play services
+            Dialog errorDialog = GooglePlayServicesUtil.getErrorDialog(
+                    resultCode,
+                    this,
+                    CONNECTION_FAILURE_RESOLUTION_REQUEST);
+
+            // If Google Play services can provide an error dialog
+            if (errorDialog != null) {
+                // Create a new DialogFragment for the error dialog
+                ErrorDialogFragment errorFragment =
+                        new ErrorDialogFragment();
+                // Set the dialog in the DialogFragment
+                errorFragment.setDialog(errorDialog);
+                // Show the error dialog in the DialogFragment
+                errorFragment.show(getFragmentManager(),
+                        "Location Updates");
+            }
+        }
+
+        return false;
+    }
+
     public void onResume() {
         super.onResume();
         currentActivity = (TextView) homeFragment.getView().findViewById(R.id.current_activity);
         timeElapsed = (TextView) homeFragment.getView().findViewById(R.id.time_elapsed);
         updateHome();
+
+//        Button testButton = (Button) homeFragment.getView().findViewById(R.id.button);
+//        testButton.setText("Add Geofence");
+//        testButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//            Location loc = mGeoBinder.getLocation();
+//            mGeoBinder.createGeofence(loc,20.0f,"test");
+//            Toast.makeText(context, "Created Geofence at " + loc.getLatitude() + " , " + loc.getLongitude(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
     }
 
     public static void updateHome() {
