@@ -113,6 +113,22 @@ public class GeoService extends Service implements
         }
     }
 
+    public void createGeofence(Location location, float radius, String uniqueID) {
+        Geofence g = new Geofence.Builder().setCircularRegion(location.getLatitude()
+                ,location.getLongitude()
+                ,radius)
+                .setRequestId(uniqueID)
+                .setExpirationDuration(Geofence.NEVER_EXPIRE)
+                .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER
+                        | Geofence.GEOFENCE_TRANSITION_EXIT).build();
+        ArrayList<Geofence> gl = new ArrayList<Geofence>();
+
+        gl.add(g);
+        mGeofencePendingIntent = getTransitionPendingIntent();
+        locationClient.addGeofences(gl , mGeofencePendingIntent, locationListener);
+        Toast.makeText(getApplicationContext(),"Created Geofences", Toast.LENGTH_SHORT).show();
+    }
+
     public IBinder onBind(Intent intent) {
 
         return mBinder;
@@ -149,7 +165,10 @@ public class GeoService extends Service implements
         startForeground(SLENDER_STICKY_NOTIFICATION_ID, notification);
         Toast.makeText(getApplicationContext(),"Started GeoService", Toast.LENGTH_SHORT).show();
         started = true;
+
         return START_STICKY;
+
+
     }
 
     @Override
@@ -167,6 +186,21 @@ public class GeoService extends Service implements
     public void onConnected(Bundle bundle) {
         location = locationClient.getLastLocation();
         locationClient.requestLocationUpdates(locationRequest, this);
+
+        Location moore = new Location("developer");
+        moore.setLatitude((double)39.9524081);
+        moore.setLongitude((double)-75.1903237);
+        createGeofence(moore, 100.0f, "Studying");
+
+        Location palestra = new Location("developer");
+        palestra.setLatitude(39.95144);
+        palestra.setLongitude(-75.18868);
+        createGeofence(palestra, 200.0f, "Hacking");
+
+        Location irvene = new Location("developer");
+        palestra.setLatitude(39.95094);
+        palestra.setLongitude(-75.19305);
+        createGeofence(irvene, 200.0f, "Presentation");
     }
 
     @Override

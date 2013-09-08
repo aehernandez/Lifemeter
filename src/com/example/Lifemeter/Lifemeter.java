@@ -115,55 +115,8 @@ public class Lifemeter extends Activity {
         fragmentTransaction.add(R.id.fragment_container, settingsFragment);
         tabD.setTabListener(new CustomTabListener(settingsFragment));
         bar.addTab(tabD);
-
-        read = new Runnable() {
-
-            @Override
-            public void run() {
-                mHandler.postDelayed(read, 1000);
-
-                SharedPreferences settings = getSharedPreferences("SETTINGS", 0);
-                previousGeofenceId = currentGeofenceId;
-                currentGeofenceId = settings.getString("Current Geofence", "Travel");
-
-                if (currentGeofenceId.equals(previousGeofenceId)) {
-                    currentTime++;
-                    currentSeconds = currentTime % 60;
-                    currentMinutes = currentTime / 60;
-                    timeElapsed.setText(String.format("00:%02d:%02d", currentMinutes, currentSeconds));
-
-                } else {
-                    currentTime = 0;
-                    currentActivity.setText(currentGeofenceId);
-                }
-            }
-
-        };
-
-
     }
 
-
-
-//    public void read() {
-//        SharedPreferences settings = getSharedPreferences("SETTINGS",0);
-//        previousGeofenceId = currentGeofenceId;
-//        currentGeofenceId = settings.getString("Current Geofence", "Travel");
-//
-//        if(currentGeofenceId.equals(previousGeofenceId)) {
-//            currentTime++;
-//            currentSeconds = currentTime % 60;
-//            currentMinutes = currentTime/60;
-//            timeElapsed.setText(String.format("00:%02d:%02d", currentMinutes,currentSeconds));
-//
-//        } else {
-//            currentTime = 0;
-//            currentActivity.setText(currentGeofenceId);
-//        }
-//
-//
-//
-//    }
 
     @Override
     protected void onStart() {
@@ -186,6 +139,8 @@ public class Lifemeter extends Activity {
         
         bindService(mIntent, mConnection, BIND_AUTO_CREATE);
         startService(mIntent);
+
+
     }
 
     @Override
@@ -251,6 +206,8 @@ public class Lifemeter extends Activity {
     }
 
     public void onResume() {
+
+
         super.onResume();
         currentActivity = (TextView) homeFragment.getView().findViewById(R.id.current_activity);
         timeElapsed = (TextView) homeFragment.getView().findViewById(R.id.time_elapsed);
