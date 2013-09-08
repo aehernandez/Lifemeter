@@ -15,10 +15,6 @@ public class HomeTab extends Fragment {
   
   public void onResume() {
 	  super.onResume();
-	  try{
-		  Lifemeter.updateHome();
-	  }catch (Exception e) {
-		  Log.d("",""+e);
-	  }
+	  Lifemeter.updateHome();
   }
 }

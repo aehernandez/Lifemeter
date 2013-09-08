@@ -5,7 +5,11 @@
       <profile>
         <option name="device" value="2.7in QVGA" />
         <option name="deviceConfiguration" value="Portrait" />
+<<<<<<< HEAD
         <option name="targetHashString" value="android-17" />
+=======
+        <option name="targetHashString" value="android-18" />
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
         <option name="theme" value="Theme.AppCompat.Light" />
       </profile>
     </option>
@@ -17,12 +21,17 @@
         <option name="device" value="2.7in QVGA" />
         <option name="dockMode" value="" />
         <option name="nightMode" value="notnight" />
+<<<<<<< HEAD
         <option name="targetHashString" value="android-17" />
+=======
+        <option name="targetHashString" value="android-18" />
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
         <option name="theme" value="Theme.AppCompat.Light" />
         <option name="visible" value="false" />
       </GlobalState>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
   </component>
@@ -43,14 +52,35 @@
     <file path="/fragment.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378627247388" ignored="false" />
     <file path="/MyActivity.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378532584540" ignored="false" />
     <file path="/Lifemeter.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378625125088" ignored="false" />
+=======
+  <component name="ChangeListManager">
+    <list default="true" id="2cafe933-5953-4869-adfb-56cf7ce6e0d6" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
+    <ignored path="Lifemeter.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <file path="/Dummy.txt" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378626662814" ignored="false" />
+    <file path="/fragment.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378581047656" ignored="false" />
+    <file path="/MyActivity.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378532584540" ignored="false" />
+    <file path="/Lifemeter.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378622419028" ignored="false" />
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
     <file path="/GeofenceWrap.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378544824299" ignored="false" />
     <file path="/GPSLocation.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378580798962" ignored="false" />
     <file path="/GeofenceWrapper.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378577605466" ignored="false" />
     <file path="/HandleGeofenceIntentService.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378629191415" ignored="false" />
     <file path="/GeofenceBroadcast.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378581738531" ignored="false" />
+<<<<<<< HEAD
     <file path="/GeoService.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378626407219" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378627193823" ignored="false" />
     <file path="/ActivityXYZ.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378627093652" ignored="false" />
+=======
+    <file path="/DbActivities.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378596093544" ignored="false" />
+    <file path="/Data.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378624330551" ignored="false" />
+    <file path="/InternalStorage.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378621650170" ignored="false" />
+    <file path="$PROJECT_DIR$/appcompat/gen/android/support/v7/appcompat/BuildConfig.java" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378622333186" ignored="false" />
+    <file path="/analytics.xml" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378624763843" ignored="false" />
+    <file path="/settings.xml" changelist="2cafe933-5953-4869-adfb-56cf7ce6e0d6" time="1378625788883" ignored="false" />
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,10 +142,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Lifemeter.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Lifemeter.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/Lifemeter.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state line="93" column="65" selection-start="3361" selection-end="3361" vertical-scroll-proportion="0.31875">
+=======
+            <state line="333" column="39" selection-start="12296" selection-end="12296" vertical-scroll-proportion="0.0">
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -123,10 +157,17 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="xyztest.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/xyztest.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state line="43" column="17" selection-start="1710" selection-end="1710" vertical-scroll-proportion="-8.24">
+=======
+      <file leaf-file-name="InternalStorage.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/InternalStorage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="110" column="17" selection-start="2514" selection-end="2514" vertical-scroll-proportion="0.0">
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
               <folding />
             </state>
           </provider>
@@ -156,6 +197,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -169,6 +211,20 @@
         <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+=======
+      <file leaf-file-name="Data.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/Data.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="64" column="20" selection-start="1551" selection-end="1551" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="analytics.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/analytics.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="5" selection-start="394" selection-end="1978" vertical-scroll-proportion="-2.5961537">
               <folding />
             </state>
           </provider>
@@ -177,10 +233,42 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="settings.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/res/layout/settings.xml">
+          <provider editor-type-id="text-editor">
+            <state line="7" column="4" selection-start="236" selection-end="236" vertical-scroll-proportion="-4.2">
+              <folding />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AnalyticsTab.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/AnalyticsTab.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="37" selection-start="1153" selection-end="1153" vertical-scroll-proportion="0.0">
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
       <file leaf-file-name="GoalsTab.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/GoalsTab.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="8" column="13" selection-start="194" selection-end="194" vertical-scroll-proportion="0.0">
+=======
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="38" selection-start="760" selection-end="760" vertical-scroll-proportion="0.0">
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
               <folding />
             </state>
           </provider>
@@ -243,6 +331,7 @@
         <option value="$PROJECT_DIR$/src/com/example/Lifemeter/GeofenceBroadcast.java" />
         <option value="$PROJECT_DIR$/project.properties" />
         <option value="$PROJECT_DIR$/src/com/example/Lifemeter/DbList.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/res/layout/main.xml" />
         <option value="$PROJECT_DIR$/res/layout/home.xml" />
         <option value="$PROJECT_DIR$/res/layout/xyztest.xml" />
@@ -250,15 +339,30 @@
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/com/example/Lifemeter/HandleGeofenceIntentService.java" />
         <option value="$PROJECT_DIR$/src/com/example/Lifemeter/GeoService.java" />
+=======
+        <option value="$PROJECT_DIR$/src/com/example/Lifemeter/DbActivities.java" />
+        <option value="$PROJECT_DIR$/src/com/example/Lifemeter/data.java" />
+        <option value="$PROJECT_DIR$/src/com/example/Lifemeter/InternalStorage.java" />
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
         <option value="$PROJECT_DIR$/src/com/example/Lifemeter/Lifemeter.java" />
+        <option value="$PROJECT_DIR$/src/com/example/Lifemeter/Data.java" />
+        <option value="$PROJECT_DIR$/res/layout/analytics.xml" />
+        <option value="$PROJECT_DIR$/res/layout/settings.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
+<<<<<<< HEAD
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
     <option name="height" value="744" />
+=======
+    <option name="x" value="301" />
+    <option name="y" value="97" />
+    <option name="width" value="1342" />
+    <option name="height" value="1102" />
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -293,7 +397,10 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+<<<<<<< HEAD
       <pane id="Scope" />
+=======
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -343,10 +450,13 @@
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+<<<<<<< HEAD
             <PATH_ELEMENT>
               <option name="myItemId" value="layout" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+=======
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -361,9 +471,17 @@
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+<<<<<<< HEAD
+=======
+      <pane id="Scope" />
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -376,7 +494,11 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/appcompat" />
+<<<<<<< HEAD
     <property name="AndroidLayoutSelectedEditor" value="text-editor" />
+=======
+    <property name="AndroidLayoutSelectedEditor" value="android-designer" />
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -386,13 +508,34 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+<<<<<<< HEAD
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.Lifemeter" />
     </key>
+=======
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
   </component>
   <component name="RunManager" selected="Android Application.Lifemeter">
+    <configuration default="false" name="Lifemeter" type="AndroidRunConfigurationType" factoryName="Android Application" temporary="true">
+      <module name="Lifemeter" />
+      <option name="ACTIVITY_CLASS" value="com.example.Lifemeter.Lifemeter" />
+      <option name="MODE" value="specific_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <RunnerSettings RunnerId="AndroidDebugRunner" />
+      <ConfigurationWrapper RunnerId="AndroidDebugRunner" />
+      <method />
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -515,6 +658,7 @@
       <option name="CLEAR_LOGCAT" value="false" />
       <method />
     </configuration>
+<<<<<<< HEAD
     <configuration default="false" name="Lifemeter" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="Lifemeter" />
       <option name="ACTIVITY_CLASS" value="com.example.Lifemeter.Lifemeter" />
@@ -533,9 +677,16 @@
       <ConfigurationWrapper RunnerId="AndroidDebugRunner" />
       <method />
     </configuration>
+=======
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
     <list size="1">
       <item index="0" class="java.lang.String" itemvalue="Android Application.Lifemeter" />
     </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Android Application.Lifemeter" />
+      </list>
+    </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
@@ -589,10 +740,27 @@
       <created>1378585576747</created>
       <updated>1378585576747</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="updateHome screen basics">
+      <created>1378594425180</created>
+      <updated>1378594425180</updated>
+    </task>
+    <task id="LOCAL-00008" summary="updateHome screen basics">
+      <created>1378622319617</created>
+      <updated>1378622319617</updated>
+    </task>
+    <task id="LOCAL-00009" summary="updateHome screen basics">
+      <created>1378624554689</created>
+      <updated>1378624554689</updated>
+    </task>
+    <task id="LOCAL-00010" summary="updateHome screen basics">
+      <created>1378626666321</created>
+      <updated>1378626666321</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
@@ -601,20 +769,40 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+=======
+    <frame x="301" y="97" width="1342" height="1102" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3287037" sideWeight="0.70162934" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3287037" sideWeight="0.70162934" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867134" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27623457" sideWeight="0.70162934" order="-1" side_tool="false" content_ui="tabs" />
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.7133106" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28668943" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980973" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32764506" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.8788396" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29506642" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3833017" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.67147434" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19848485" sideWeight="0.7133106" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28668943" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26003087" sideWeight="0.70162934" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29837066" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="100" width="1182" height="544" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -690,9 +878,15 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/gen/com/example/Lifemeter/R.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="19" selection-start="169" selection-end="169" vertical-scroll-proportion="0.115207374">
+=======
+    <entry file="file://$PROJECT_DIR$/gen/com/example/Lifemeter/Manifest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="19" selection-start="176" selection-end="176" vertical-scroll-proportion="0.115207374">
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
           <folding />
         </state>
       </provider>
@@ -706,6 +900,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/project.properties">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state line="16" column="11" selection-start="602" selection-end="602" vertical-scroll-proportion="0.3686636">
           <folding />
         </state>
@@ -714,24 +909,53 @@
     <entry file="file://$PROJECT_DIR$/bin/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="38" selection-start="760" selection-end="760" vertical-scroll-proportion="0.0">
+=======
+        <state line="16" column="11" selection-start="602" selection-end="602" vertical-scroll-proportion="0.3686636" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/goals.xml">
+      <provider editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/AnalyticsBackground.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="13" selection-start="331" selection-end="331" vertical-scroll-proportion="0.09448819">
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/DbActivities.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="25" selection-start="814" selection-end="814" vertical-scroll-proportion="0.0">
+=======
+    <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/Categories.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="12" selection-start="196" selection-end="196" vertical-scroll-proportion="0.20516717">
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/GPSLocation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="4" selection-start="1193" selection-end="1239" vertical-scroll-proportion="0.0">
+=======
+    <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/DbActivities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="22" selection-start="583" selection-end="583" vertical-scroll-proportion="0.24350649">
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -747,18 +971,35 @@
         <state line="280" column="40" selection-start="9898" selection-end="9898" vertical-scroll-proportion="-12.56">
           <folding />
         </state>
+=======
+    <entry file="jar://$USER_HOME$/Downloads/adt-bundle-mac-x86_64-20130729/sdk/platforms/android-18/android.jar!/android/app/Activity.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="438" column="0" selection-start="19629" selection-end="19629" vertical-scroll-proportion="5.5444565" />
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/adt-bundle-mac-x86_64-20130729/sdk/platforms/android-18/android.jar!/java/lang/reflect/Method.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="53" selection-start="2321" selection-end="2321" vertical-scroll-proportion="0.9259868" />
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
       </provider>
       <provider editor-type-id="android-designer">
         <state />
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/GoalsTab.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="13" selection-start="194" selection-end="194" vertical-scroll-proportion="0.0">
+=======
+    <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/InternalStorage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="110" column="17" selection-start="2514" selection-end="2514" vertical-scroll-proportion="0.0">
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://D:/Android/android-sdk/sources/android-17/android/content/ContextWrapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="86" column="35" selection-start="2705" selection-end="2705" vertical-scroll-proportion="0.0">
@@ -769,6 +1010,20 @@
     <entry file="file://$PROJECT_DIR$/res/layout/xyztest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="43" column="17" selection-start="1710" selection-end="1710" vertical-scroll-proportion="-8.24">
+=======
+    <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/Lifemeter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="333" column="39" selection-start="12296" selection-end="12296" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/Data.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="20" selection-start="1551" selection-end="1551" vertical-scroll-proportion="0.0">
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
           <folding />
         </state>
       </provider>
@@ -776,12 +1031,19 @@
         <state />
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/ActivityXYZ.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="39" selection-start="519" selection-end="519" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+=======
+    <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/AnalyticsTab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="37" selection-start="1153" selection-end="1153" vertical-scroll-proportion="0.0">
+          <folding />
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
         </state>
       </provider>
     </entry>
@@ -792,13 +1054,23 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/HandleGeofenceIntentService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="70" column="0" selection-start="3123" selection-end="3123" vertical-scroll-proportion="0.0">
+=======
+    <entry file="file://$PROJECT_DIR$/res/layout/analytics.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="5" selection-start="394" selection-end="1978" vertical-scroll-proportion="-2.5961537">
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/com/example/Lifemeter/GeoService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="56" column="60" selection-start="1821" selection-end="1821" vertical-scroll-proportion="-5.96">
@@ -816,6 +1088,16 @@
             <element signature="imports" expanded="true" />
           </folding>
         </state>
+=======
+    <entry file="file://$PROJECT_DIR$/res/layout/settings.xml">
+      <provider editor-type-id="text-editor">
+        <state line="7" column="4" selection-start="236" selection-end="236" vertical-scroll-proportion="-4.2">
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+>>>>>>> 585ae563cd7e00be247c798efa057ca8ff497a8a
       </provider>
     </entry>
   </component>
@@ -896,6 +1178,17 @@
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
           <last-edited>android-support-v7-appcompat</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>

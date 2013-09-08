@@ -1,12 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
      <com.example.Lifemeter.AnalyticsBackground
+         android:id="@+id/analytics_background"
          android:layout_width="fill_parent"
+         android:layout_height="fill_parent"
+         />
+     <LinearLayout 
+         android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         />"
+         android:orientation="vertical"
+         android:paddingTop="140px"
+         android:paddingLeft="800px">
+         
+         <TextView 
+            android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"
+         	android:text="Home"
+         	/>
+         <TextView 
+            android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"
+         	android:paddingTop="32px"
+         	android:text="Work"
+         	/>
+         <TextView 
+            android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"
+         	android:paddingTop="32px"
+         	android:text="Gym"
+         	/>
+         <TextView 
+            android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"
+         	android:paddingTop="32px"
+         	android:text="Shopping"
+         	/>
+         <TextView 
+            android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"
+         	android:paddingTop="32px"
+         	android:text="Eating"
+         	/>
+         <TextView 
+            android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"
+         	android:paddingTop="32px"
+         	android:text="Transit"
+         	/>
+         <TextView 
+            android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"
+         	android:paddingTop="32px"
+         	android:text="Studying"
+         	/>
+     </LinearLayout>
+     
+     <Spinner
+         android:id="@+id/time_interval"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity="bottom|right"
+         />
         
-</LinearLayout>
+</FrameLayout>
