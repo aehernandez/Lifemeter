@@ -21,28 +21,29 @@ import android.widget.TextView;
 
 public class Lifemeter extends Activity {
 
-    public SQLiteDatabase database;
+    public static SQLiteDatabase database;
     public DbList sampledb;
     public DbClass GeoFenceDb;
-    public DbActivities ActivityDb = new DbActivities(this); 
+    public static DbActivities ActivityDb; 
     //Location classes
     public GPSLocation gps;
     private GeofenceBroadcast geofenceReceiver;
 
-    private TextView currentActivity;
-    private TextView timeElapsed;
-    private ProgressBar firstBar;
-    private ProgressBar secondBar;
-    private ProgressBar thirdBar;
-    private ProgressBar fourthBar;
-    private ProgressBar fifthBar;
-    private HomeTab homeFragment;
+    private static TextView currentActivity;
+    private static TextView timeElapsed;
+    private static ProgressBar firstBar;
+    private static ProgressBar secondBar;
+    private static ProgressBar thirdBar;
+    private static ProgressBar fourthBar;
+    private static ProgressBar fifthBar;
+    private static HomeTab homeFragment;
     private AnalyticsTab analyticsFragment;
     private GoalsTab goalsFragment;
     private SettingsTab settingsFragment;
+    private static Context context;
     
-    private TextView [] topActivities = new TextView[5];
-    private TextView [] topTimes = new TextView[5];
+    private static TextView [] topActivities = new TextView[5];
+    private static TextView [] topTimes = new TextView[5];
 
     /**
      * Called when the activity is first created.
@@ -52,8 +53,11 @@ public class Lifemeter extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        ActivityDb.Insert(0,"Home",100);
-        ActivityDb.Insert(0, "Eat", 150);
+        context=this;
+        //ActivityDb = new DbActivities(this);
+        
+        //ActivityDb.Insert(0,"Home",100);
+        //ActivityDb.Insert(0, "Eat", 150);
 
         //Handles all the GPS pings and Geofencing capabilities
         //gps = new GPSLocation();
@@ -95,27 +99,17 @@ public class Lifemeter extends Activity {
         fragmentTransaction.add(R.id.fragment_container, settingsFragment);
         tabD.setTabListener(new CustomTabListener(settingsFragment));
         bar.addTab(tabD);
+        
     }
 
-<<<<<<< HEAD
-    public static int whatToday() {
-        Calendar today = Calendar.getInstance();
-        today.set(Calendar.MILLISECOND,0);
-        today.set(Calendar.SECOND,0);
-        today.set(Calendar.MINUTE,0);
-        today.set(Calendar.HOUR_OF_DAY,0);
-        long msSince = today.getTimeInMillis();
-        return (int)(msSince/86400000);
-=======
     public void onResume() {
         super.onResume();
         currentActivity = (TextView) homeFragment.getView().findViewById(R.id.current_activity);
         timeElapsed = (TextView) homeFragment.getView().findViewById(R.id.time_elapsed);
         updateHome();
->>>>>>> da02ef962870f389aa4f07644ecd3863a223cf17
     }
 
-    public void updateHome() {
+    public static void updateHome() {
         String[] activities = getActivitiesTracked();
         double[] weeklyTotals = new double[activities.length];
 
@@ -164,12 +158,12 @@ public class Lifemeter extends Activity {
 
         for(int j=0;j<topActivities.length;j++) {
             String id = "activity"+(j+1);
-            int resID = getResources().getIdentifier(id, "id", "com.example.Lifemeter");
+            int resID = context.getResources().getIdentifier(id, "id", "com.example.Lifemeter");
             topActivities[j] = (TextView)homeFragment.getView().findViewById(resID);
             topActivities[j].setText(activities[j]);
 
             id = "time"+(j+1);
-            resID= getResources().getIdentifier(id,"id","com.example.Lifemeter");
+            resID= context.getResources().getIdentifier(id,"id","com.example.Lifemeter");
             topTimes[j]=(TextView)homeFragment.getView().findViewById(resID);
             topTimes[j].setText(hourForm.format(weeklyTotals[j]/60) + " hrs");
         }
@@ -197,7 +191,7 @@ public class Lifemeter extends Activity {
      */
 
     // Gives today's date in terms of days from the java reference date
-    public int whatToday() {
+    public static int whatToday() {
         Calendar today = Calendar.getInstance();
         today.set(Calendar.MILLISECOND,0);
         today.set(Calendar.SECOND,0);
@@ -208,29 +202,12 @@ public class Lifemeter extends Activity {
     }
 
     // Get the first reference date for which data is available
-    public int getFirstDay() {
+    public static int getFirstDay() {
         return 15;
     }
 
     // Get the list of activities being tracked
-    public String[] getActivitiesTracked() {
-<<<<<<< HEAD
-        String[] FakeArray = new String[100];
-        Cursor CursorArray;
-        String activity = "activity";
-        CursorArray = database.query(sampledb.TableName, new String[] {activity}, null, null, null, null, null, null);
-
-        CursorArray.moveToFirst();
-        for (int i=0; i < CursorArray.getCount(); i++){
-            FakeArray[i] = CursorArray.getString(1);
-        }
-        return FakeArray;
-    }
-
-
-    // Get the activities in chronological order for a given day
-    public static String[] getActivityList(int day) {
-=======
+    public static String[] getActivitiesTracked() {
         //String[] FakeArray = new String[100];
         //Cursor CursorArray;
         //String activity = "activity";
@@ -240,19 +217,19 @@ public class Lifemeter extends Activity {
         //for (int i=0; i < CursorArray.getCount(); i++){
         //    FakeArray[i] = CursorArray.getString(1);
         //}
->>>>>>> da02ef962870f389aa4f07644ecd3863a223cf17
-        String[] fakeArray;
-        fakeArray = new String[7];
-        fakeArray[0] = "Home";
-        fakeArray[1] = "Work";
-        fakeArray[2] = "Eating";
-        fakeArray[3] = "Gym";
-        fakeArray[4] = "Travel";
-        fakeArray[5] = "Shopping";
-        fakeArray[6] = "Studying";
-        return fakeArray;
+       // return FakeArray;
+    	String[] fakeArray = new String[7];
+    	fakeArray[0] = "Home";
+    	fakeArray[1] = "Work";
+    	fakeArray[2] = "Gym";
+    	fakeArray[3] = "Shopping";
+    	fakeArray[4] = "Eating";
+    	fakeArray[5] = "Transit";
+    	fakeArray[6] = "Studying";
+    	return fakeArray;
     }
-    
+
+
     //GeoFence Data retrieval for radius for Alain
     public double[] getRadius(){
 		double[] FakeRad = new double[1000000];
@@ -313,56 +290,60 @@ public class Lifemeter extends Activity {
 
 
     // Get the activities in chronological order for a given day
-    public String[] getActivityList(int day) {
+    public static String[] getActivityList(int day) {
         
-            String[] fakeArray = new String[1000000];
-	    Cursor CursorArray;
-	    String Activity = "activity";
-	    CursorArray = database.rawQuery("SELECT activity FROM" +ActivityDb.TableName+ "WHERE day="+day ,null);
+        //    String[] fakeArray = new String[1000000];
+	    //Cursor CursorArray;
+	    //String Activity = "activity";
+	    //CursorArray = database.rawQuery("SELECT activity FROM" +ActivityDb.TableName+ "WHERE day="+day ,null);
 	    
-	    CursorArray.moveToFirst();
-		for (int i=0; i < CursorArray.getCount(); i++){
-			fakeArray[i] = CursorArray.getString(0);
-		}
+	    //CursorArray.moveToFirst();
+		//for (int i=0; i < CursorArray.getCount(); i++){
+		//	fakeArray[i] = CursorArray.getString(0);
+		//}
+    	String[] fakeArray = new String[10];
+    	fakeArray[0] = "Home";
+    	fakeArray[1] = "Work";
+    	fakeArray[2] = "Home";
+    	fakeArray[3] = "Shopping";
+    	fakeArray[4] = "Eating";
+    	fakeArray[5] = "Transit";
+    	fakeArray[6] = "Home";
+    	fakeArray[7] = "Studying";
+    	fakeArray[8] = "Work";
+    	fakeArray[9] = "Home";
 	    return fakeArray;
 	}
     
     // Get the activity times in chronological order for a given day
-<<<<<<< HEAD
+
     public static double[] getTimeList(int day) {
-        double[] fakeArray;
-        fakeArray = new double[6];
-        fakeArray[0] = 38.56;
-        fakeArray[1] = 593.23;
-        fakeArray[2] = 192.80;
-        fakeArray[3] = 60.97;
-        fakeArray[4] = 15.40;
-        fakeArray[5] = 78.95;
-        return fakeArray;
-    }
-
-    // Calculate the number of minutes of each category for a day
-    public static double[] calculateTotalsDay(int day, String[] activityList) {
-
-
-=======
-    public double[] getTimeList(int day) {
-            double[] fakeArray = new double[1000000];
-	    Cursor CursorArray;
-	    String Activity = "activity";
-	    CursorArray = database.rawQuery("SELECT time FROM" +ActivityDb.TableName+ "WHERE day="+day ,null);
+        //double[] fakeArray = new double[1000000];
+	    //Cursor CursorArray;
+	    //String Activity = "activity";
+	    //CursorArray = database.rawQuery("SELECT time FROM" +ActivityDb.TableName+ "WHERE day="+day ,null);
 	    
-	    CursorArray.moveToFirst();
-		for (int i=0; i < CursorArray.getCount(); i++){
-			fakeArray[i] = CursorArray.getDouble(0);
-		}
-	return fakeArray;
+	    //CursorArray.moveToFirst();
+		//for (int i=0; i < CursorArray.getCount(); i++){
+		//	fakeArray[i] = CursorArray.getDouble(0);
+		//}
+    	double[] fakeArray = new double[10];
+    	fakeArray[0] = 22.4;
+    	fakeArray[1] = 758.9;
+    	fakeArray[2] = 100.0;
+    	fakeArray[3] = 253.4;
+    	fakeArray[4] = 90.3;
+    	fakeArray[5] = 20.1;
+    	fakeArray[6] = 134.5;
+    	fakeArray[7] = 50.6;
+    	fakeArray[8] = 25.4;
+    	fakeArray[9] = 60.54;
+    	return fakeArray;
         
     }
 
     // Calculate the number of minutes of each category for a day
-    public double[] calculateTotalsDay(int day) {
->>>>>>> da02ef962870f389aa4f07644ecd3863a223cf17
+    public static double[] calculateTotalsDay(int day) {
         double[] timeList = getTimeList(day);
         String[] activityList = getActivityList(day);
 
@@ -461,6 +442,8 @@ class CustomTabListener implements ActionBar.TabListener {
 
     @Override
     public void onTabSelected(Tab tab, FragmentTransaction ft) {
+    	//if(tab.getText().equals("Home"))
+    		//Lifemeter.updateHome();
         ft.replace(R.id.fragment_container, frag);
     }
 
