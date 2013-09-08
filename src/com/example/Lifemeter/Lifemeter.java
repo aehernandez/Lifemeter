@@ -220,11 +220,8 @@ public class Lifemeter extends Activity {
        // return FakeArray;
     	String[] activityArray = new String[10];
     	
-<<<<<<< HEAD
-    	activityArray = Data.Places(); 
-=======
+
     	activityArray = data.PlacesTracked(); 
->>>>>>> a8bddbd2466d4886e090e1954b1595ec83602662
     	
     	return activityArray;
     }
@@ -303,7 +300,7 @@ public class Lifemeter extends Activity {
 		//}
         String[] activityArray = new String[10];
     	
-    	activityArray = Data.Places(); 
+    	activityArray = data.Places(); 
     	
     	return activityArray;
 	}
@@ -324,7 +321,7 @@ public class Lifemeter extends Activity {
 	
     	double[][] timespent = new double[10][400];
     	
-    	timespent = Data.DataRandomizer(); 
+    	timespent = data.DataRandomizer(); 
     	double[] timeArray = new double[10];
     	timeArray[0] = timespent[0][0];
     	timeArray[1] = timespent[0][1];
